@@ -1,0 +1,361 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    font-family: Tahoma, Arial, sans-serif;
+
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+
+.app {
+    max-width: 900px;
+    margin: auto;
+
+    min-height: 100vh;
+
+    padding-bottom: 80px;
+}
+
+
+/* Header */
+
+.topbar {
+    background-color: white;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    font-size: 24px;
+}
+
+.topbar p {
+    margin: 6px 0 0;
+
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* Main Content */
+
+.content {
+    padding: 16px;
+}
+
+
+/* Stats */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.stat-card {
+    background-color: white;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    text-align: center;
+
+    border: 1px solid #e5e7eb;
+}
+
+.stat-number {
+    display: block;
+
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.stat-label {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* Titles */
+
+h2 {
+    font-size: 17px;
+
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+
+/* Quick Actions */
+
+.quick-actions {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.action-card {
+    background-color: white;
+
+    padding: 18px 10px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.action-card:hover {
+    background-color: #f9fafb;
+}
+
+
+/* Empty Box */
+
+.empty-box {
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    border: 1px dashed #d1d5db;
+
+    text-align: center;
+
+    color: #6b7280;
+}
+
+
+/* Bottom Navigation */
+
+.bottom-nav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    background-color: white;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.nav-button {
+    padding: 16px 5px;
+
+    border: none;
+
+    background: none;
+
+    color: #6b7280;
+
+    cursor: pointer;
+}
+
+.nav-button.active {
+    color: #111827;
+
+    font-weight: bold;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* Modal */
+
+.modal {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    z-index: 100;
+}
+
+
+.modal.show {
+    display: flex;
+}
+
+
+.modal-box {
+    width: 100%;
+    max-width: 450px;
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+}
+
+
+.modal-box h2 {
+    margin-top: 0;
+}
+
+
+.modal-box label {
+    display: block;
+
+    margin-top: 14px;
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    color: #4b5563;
+}
+
+
+.modal-box input {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+
+.form-buttons {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.form-buttons button {
+    flex: 1;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background-color: #111827;
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.form-buttons .cancel-button {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+
+/* Client Card */
+
+.client-card {
+    background-color: white;
+
+    padding: 16px;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    margin-bottom: 10px;
+}
+
+
+.client-card h3 {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+
+.client-card p {
+    margin: 6px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+.client-profile {
+    display: none;
+}
+
+
+.profile-card {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    padding: 16px;
+}
+
+
+.profile-card p {
+    margin: 10px 0;
+}
+
+
+.back-button {
+    border: none;
+
+    background-color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    margin-bottom: 10px;
+}

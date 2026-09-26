@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>پنل مربی</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <header class="topbar">
+            <div>
+                <h1>پنل مربی</h1>
+                <p>مدیریت شاگردها و برنامه‌های تمرینی</p>
+            </div>
+        </header>
+
+        <main class="content">
+
+            <section class="dashboard">
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">شاگرد</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">برنامه</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">حرکت</span>
+                    </div>
+
+                </div>
+
+
+                <h2>دسترسی سریع</h2>
+
+                <div class="quick-actions">
+
+                    <button class="action-card" id="addClientButton">
+    + افزودن شاگرد
+</button>
+
+                    <button class="action-card">
+                        + ساخت برنامه
+                    </button>
+
+                    <button class="action-card">
+                        + افزودن حرکت
+                    </button>
+
+                </div>
+
+
+                <h2>آخرین شاگردها</h2>
+
+      <div id="clientList">
+    <div class="empty-box">
+        هنوز شاگردی ثبت نشده است.
+    </div>
+</div>
+
+            </section>
+
+        </main>
+
+
+        <nav class="bottom-nav">
+
+            <button class="nav-button active">
+                خانه
+            </button>
+
+            <button class="nav-button">
+                شاگردها
+            </button>
+
+            <button class="nav-button">
+                حرکات
+            </button>
+
+            <button class="nav-button">
+                تنظیمات
+            </button>
+
+        </nav>
+
+    </div>
+
+    <div class="modal" id="clientModal">
+
+    <div class="modal-box">
+
+        <h2>افزودن شاگرد</h2>
+
+        <label>نام و نام خانوادگی</label>
+        <input type="text" id="clientName">
+
+        <label>شماره تماس</label>
+        <input type="text" id="clientPhone">
+
+        <label>سن</label>
+        <input type="number" id="clientAge">
+
+        <label>وزن</label>
+        <input type="text" id="clientWeight">
+
+        <label>هدف</label>
+        <input
+            type="text"
+            id="clientGoal"
+            placeholder="مثلاً افزایش حجم"
+        >
+
+        <div class="form-buttons">
+
+            <button id="saveClientButton">
+                ذخیره
+            </button>
+
+            <button
+                id="cancelClientButton"
+                class="cancel-button"
+            >
+                لغو
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+    <script src="app.js"></script>
+
+</body>
+</html>
