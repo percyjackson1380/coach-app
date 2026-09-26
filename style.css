@@ -15,7 +15,8 @@ body {
 
 
 button,
-input {
+input,
+textarea {
     font-family: inherit;
 }
 
@@ -151,7 +152,7 @@ h2 {
 }
 
 
-/* Empty Box */
+/* Empty State */
 
 .empty-box {
     background-color: white;
@@ -239,6 +240,74 @@ h2 {
     border-radius: 10px;
 
     cursor: pointer;
+
+    margin-bottom: 10px;
+}
+
+
+/* Profile Section Header */
+
+.profile-section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+
+.profile-section-header h2 {
+    margin: 0;
+}
+
+
+/* Small Buttons */
+
+.small-button {
+    border: none;
+
+    background-color: #111827;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+/* Program Cards */
+
+.program-card {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    margin-bottom: 10px;
+}
+
+
+.program-card h3 {
+    margin: 0 0 8px;
+}
+
+
+.program-card p {
+    margin: 5px 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
 }
 
 
@@ -265,6 +334,8 @@ h2 {
     padding: 20px;
 
     z-index: 100;
+
+    overflow-y: auto;
 }
 
 
@@ -276,13 +347,17 @@ h2 {
 .modal-box {
     width: 100%;
 
-    max-width: 450px;
+    max-width: 500px;
 
     background-color: white;
 
     border-radius: 18px;
 
     padding: 20px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
 }
 
 
@@ -304,7 +379,8 @@ h2 {
 }
 
 
-.modal-box input {
+.modal-box input,
+.modal-box textarea {
     width: 100%;
 
     padding: 12px;
@@ -316,6 +392,15 @@ h2 {
     font-size: 16px;
 }
 
+
+.modal-box textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+
+/* Form Buttons */
 
 .form-buttons {
     display: flex;
@@ -347,6 +432,64 @@ h2 {
     background-color: #e5e7eb;
 
     color: #111827;
+}
+
+
+/* Program Days */
+
+.program-days-section {
+    margin-top: 24px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+.program-days-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.program-days-header h3 {
+    margin: 0;
+
+    font-size: 15px;
+}
+
+
+.day-row {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+
+.day-row input {
+    flex: 1;
+}
+
+
+.remove-day-button {
+    border: none;
+
+    background-color: #fee2e2;
+
+    color: #b91c1c;
+
+    border-radius: 10px;
+
+    padding: 0 12px;
+
+    cursor: pointer;
 }
 
 
@@ -402,81 +545,14 @@ h2 {
         grid-template-columns: 1fr;
     }
 
-}
-.profile-section-header {
-    display: flex;
 
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: 28px;
-}
+    .day-row {
+        align-items: stretch;
+    }
 
 
-.profile-section-header h2 {
-    margin: 0;
-}
+    .remove-day-button {
+        padding: 0 10px;
+    }
 
-
-.small-button {
-    border: none;
-
-    background-color: #111827;
-
-    color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-
-    cursor: pointer;
-}
-
-
-.modal-box textarea {
-    width: 100%;
-
-    min-height: 100px;
-
-    padding: 12px;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    font-family: inherit;
-
-    resize: vertical;
-}
-
-
-.program-card {
-    background-color: white;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 14px;
-
-    padding: 16px;
-
-    margin-bottom: 10px;
-}
-
-
-.program-card h3 {
-    margin: 0 0 6px;
-}
-
-
-.program-card p {
-    margin: 5px 0;
-
-    color: #6b7280;
-
-    font-size: 13px;
 }

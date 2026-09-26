@@ -16,6 +16,9 @@ const clientList =
 const clientCount =
     document.getElementById("clientCount");
 
+const programCount =
+    document.getElementById("programCount");
+
 
 const dashboard =
     document.querySelector(".dashboard");
@@ -43,6 +46,17 @@ const programList =
     document.getElementById("programList");
 
 
+const addDayButton =
+    document.getElementById("addDayButton");
+
+const daysContainer =
+    document.getElementById("daysContainer");
+
+
+
+/* -------------------------
+   DATA
+------------------------- */
 
 let clients =
     JSON.parse(localStorage.getItem("clients")) || [];
@@ -55,23 +69,32 @@ let programs =
 let currentClientId = null;
 
 
+let programDays = [];
+
+
 
 /* -------------------------
    CLIENT MODAL
 ------------------------- */
 
-addClientButton.addEventListener("click", function () {
+addClientButton.addEventListener(
+    "click",
+    function () {
 
-    clientModal.classList.add("show");
+        clientModal.classList.add("show");
 
-});
+    }
+);
 
 
-cancelClientButton.addEventListener("click", function () {
+cancelClientButton.addEventListener(
+    "click",
+    function () {
 
-    clientModal.classList.remove("show");
+        clientModal.classList.remove("show");
 
-});
+    }
+);
 
 
 
@@ -79,68 +102,87 @@ cancelClientButton.addEventListener("click", function () {
    SAVE CLIENT
 ------------------------- */
 
-saveClientButton.addEventListener("click", function () {
+saveClientButton.addEventListener(
+    "click",
+    function () {
 
-    const name =
-        document.getElementById("clientName").value.trim();
+        const name =
+            document
+                .getElementById("clientName")
+                .value
+                .trim();
 
-    const phone =
-        document.getElementById("clientPhone").value.trim();
+        const phone =
+            document
+                .getElementById("clientPhone")
+                .value
+                .trim();
 
-    const age =
-        document.getElementById("clientAge").value;
+        const age =
+            document
+                .getElementById("clientAge")
+                .value;
 
-    const weight =
-        document.getElementById("clientWeight").value.trim();
+        const weight =
+            document
+                .getElementById("clientWeight")
+                .value
+                .trim();
 
-    const goal =
-        document.getElementById("clientGoal").value.trim();
+        const goal =
+            document
+                .getElementById("clientGoal")
+                .value
+                .trim();
 
 
 
-    if (name === "") {
+        if (name === "") {
 
-        alert("نام شاگرد را وارد کنید");
+            alert("نام شاگرد را وارد کنید");
 
-        return;
+            return;
+
+        }
+
+
+
+        const newClient = {
+
+            id: Date.now(),
+
+            name: name,
+
+            phone: phone,
+
+            age: age,
+
+            weight: weight,
+
+            goal: goal
+
+        };
+
+
+
+        clients.push(newClient);
+
+
+
+        saveClients();
+
+        renderClients();
+
+        updateCounts();
+
+
+
+        clientModal.classList.remove("show");
+
+        clearClientForm();
 
     }
-
-
-
-    const newClient = {
-
-        id: Date.now(),
-
-        name: name,
-
-        phone: phone,
-
-        age: age,
-
-        weight: weight,
-
-        goal: goal
-
-    };
-
-
-
-    clients.push(newClient);
-
-
-
-    saveClients();
-
-    renderClients();
-
-
-
-    clientModal.classList.remove("show");
-
-    clearClientForm();
-
-});
+);
 
 
 
@@ -164,10 +206,6 @@ function saveClients() {
 ------------------------- */
 
 function renderClients() {
-
-    clientCount.textContent = clients.length;
-
-
 
     if (clients.length === 0) {
 
@@ -247,12 +285,16 @@ function renderClients() {
 
 function openClientProfile(client) {
 
-    currentClientId = client.id;
+    currentClientId =
+        client.id;
 
 
-    dashboard.style.display = "none";
 
-    clientProfile.style.display = "block";
+    dashboard.style.display =
+        "none";
+
+    clientProfile.style.display =
+        "block";
 
 
 
@@ -305,11 +347,14 @@ backButton.addEventListener(
     "click",
     function () {
 
-        clientProfile.style.display = "none";
+        clientProfile.style.display =
+            "none";
 
-        dashboard.style.display = "block";
+        dashboard.style.display =
+            "block";
 
-        currentClientId = null;
+        currentClientId =
+            null;
 
     }
 );
@@ -324,7 +369,13 @@ addProgramButton.addEventListener(
     "click",
     function () {
 
-        programModal.classList.add("show");
+        programDays = [];
+
+        renderProgramDays();
+
+        programModal.classList.add(
+            "show"
+        );
 
     }
 );
@@ -334,10 +385,181 @@ cancelProgramButton.addEventListener(
     "click",
     function () {
 
-        programModal.classList.remove("show");
+        programModal.classList.remove(
+            "show"
+        );
+
+        clearProgramForm();
 
     }
 );
+
+
+
+/* -------------------------
+   ADD TRAINING DAY
+------------------------- */
+
+addDayButton.addEventListener(
+    "click",
+    function () {
+
+        const newDay = {
+
+            id:
+                Date.now() +
+                Math.random(),
+
+            title: ""
+
+        };
+
+
+
+        programDays.push(
+            newDay
+        );
+
+
+
+        renderProgramDays();
+
+    }
+);
+
+
+
+/* -------------------------
+   RENDER TRAINING DAYS
+------------------------- */
+
+function renderProgramDays() {
+
+    daysContainer.innerHTML =
+        "";
+
+
+
+    programDays.forEach(
+        function (day, index) {
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+
+
+            row.classList.add(
+                "day-row"
+            );
+
+
+
+            const input =
+                document.createElement(
+                    "input"
+                );
+
+
+
+            input.type =
+                "text";
+
+
+
+            input.placeholder =
+                "مثلاً جلسه " +
+                (index + 1) +
+                " - سینه";
+
+
+
+            input.value =
+                day.title;
+
+
+
+            input.addEventListener(
+                "input",
+                function () {
+
+                    day.title =
+                        input.value;
+
+                }
+            );
+
+
+
+            const removeButton =
+                document.createElement(
+                    "button"
+                );
+
+
+
+            removeButton.type =
+                "button";
+
+
+
+            removeButton.classList.add(
+                "remove-day-button"
+            );
+
+
+
+            removeButton.textContent =
+                "حذف";
+
+
+
+            removeButton.addEventListener(
+                "click",
+                function () {
+
+                    programDays =
+                        programDays.filter(
+                            function (item) {
+
+                                return (
+                                    item.id !==
+                                    day.id
+                                );
+
+                            }
+                        );
+
+
+
+                    renderProgramDays();
+
+                }
+            );
+
+
+
+            row.appendChild(
+                input
+            );
+
+
+
+            row.appendChild(
+                removeButton
+            );
+
+
+
+            daysContainer.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
 
 
 
@@ -350,25 +572,30 @@ saveProgramButton.addEventListener(
     function () {
 
         const title =
-            document.getElementById("programTitle")
-            .value
-            .trim();
+            document
+                .getElementById("programTitle")
+                .value
+                .trim();
 
         const goal =
-            document.getElementById("programGoal")
-            .value
-            .trim();
+            document
+                .getElementById("programGoal")
+                .value
+                .trim();
 
         const notes =
-            document.getElementById("programNotes")
-            .value
-            .trim();
+            document
+                .getElementById("programNotes")
+                .value
+                .trim();
 
 
 
         if (title === "") {
 
-            alert("عنوان برنامه را وارد کنید");
+            alert(
+                "عنوان برنامه را وارد کنید"
+            );
 
             return;
 
@@ -378,7 +605,9 @@ saveProgramButton.addEventListener(
 
         if (currentClientId === null) {
 
-            alert("شاگرد انتخاب نشده است");
+            alert(
+                "شاگرد انتخاب نشده است"
+            );
 
             return;
 
@@ -390,19 +619,28 @@ saveProgramButton.addEventListener(
 
             id: Date.now(),
 
-            clientId: currentClientId,
+            clientId:
+                currentClientId,
 
-            title: title,
+            title:
+                title,
 
-            goal: goal,
+            goal:
+                goal,
 
-            notes: notes
+            notes:
+                notes,
+
+            days:
+                programDays
 
         };
 
 
 
-        programs.push(newProgram);
+        programs.push(
+            newProgram
+        );
 
 
 
@@ -410,11 +648,15 @@ saveProgramButton.addEventListener(
 
         renderPrograms();
 
-        updateProgramCount();
+        updateCounts();
 
 
 
-        programModal.classList.remove("show");
+        programModal.classList.remove(
+            "show"
+        );
+
+
 
         clearProgramForm();
 
@@ -445,15 +687,22 @@ function savePrograms() {
 function renderPrograms() {
 
     const clientPrograms =
-        programs.filter(function (program) {
+        programs.filter(
+            function (program) {
 
-            return program.clientId === currentClientId;
+                return (
+                    program.clientId ===
+                    currentClientId
+                );
 
-        });
+            }
+        );
 
 
 
-    if (clientPrograms.length === 0) {
+    if (
+        clientPrograms.length === 0
+    ) {
 
         programList.innerHTML = `
 
@@ -469,58 +718,82 @@ function renderPrograms() {
 
 
 
-    programList.innerHTML = "";
+    programList.innerHTML =
+        "";
 
 
 
-    clientPrograms.forEach(function (program) {
+    clientPrograms.forEach(
+        function (program) {
 
-        const card =
-            document.createElement("div");
-
-
-
-        card.classList.add("program-card");
-
-
-
-        card.innerHTML = `
-
-            <h3>
-                ${program.title}
-            </h3>
-
-            <p>
-                هدف:
-                ${program.goal || "-"}
-            </p>
-
-            <p>
-                ${program.notes || "بدون توضیحات"}
-            </p>
-
-        `;
+            const card =
+                document.createElement(
+                    "div"
+                );
 
 
 
-        programList.appendChild(card);
+            card.classList.add(
+                "program-card"
+            );
 
-    });
+
+
+            const numberOfDays =
+                program.days
+                    ? program.days.length
+                    : 0;
+
+
+
+            card.innerHTML = `
+
+                <h3>
+                    ${program.title}
+                </h3>
+
+                <p>
+                    هدف:
+                    ${program.goal || "-"}
+                </p>
+
+                <p>
+                    ${
+                        program.notes ||
+                        "بدون توضیحات"
+                    }
+                </p>
+
+                <p>
+                    تعداد جلسات:
+                    ${numberOfDays}
+                </p>
+
+            `;
+
+
+
+            programList.appendChild(
+                card
+            );
+
+        }
+    );
 
 }
 
 
 
 /* -------------------------
-   UPDATE PROGRAM COUNT
+   COUNTERS
 ------------------------- */
 
-function updateProgramCount() {
+function updateCounts() {
 
-    const statNumbers =
-        document.querySelectorAll(".stat-number");
+    clientCount.textContent =
+        clients.length;
 
-    statNumbers[1].textContent =
+    programCount.textContent =
         programs.length;
 
 }
@@ -535,23 +808,28 @@ function clearClientForm() {
 
     document.getElementById(
         "clientName"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "clientPhone"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "clientAge"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "clientWeight"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "clientGoal"
-    ).value = "";
+    ).value =
+        "";
 
 }
 
@@ -565,15 +843,27 @@ function clearProgramForm() {
 
     document.getElementById(
         "programTitle"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "programGoal"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "programNotes"
-    ).value = "";
+    ).value =
+        "";
+
+
+
+    programDays =
+        [];
+
+
+
+    renderProgramDays();
 
 }
 
@@ -585,4 +875,4 @@ function clearProgramForm() {
 
 renderClients();
 
-updateProgramCount();
+updateCounts();

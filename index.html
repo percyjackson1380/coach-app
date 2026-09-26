@@ -15,10 +15,12 @@
     <div class="app">
 
         <header class="topbar">
+
             <div>
                 <h1>پنل مربی</h1>
                 <p>مدیریت شاگردها و برنامه‌های تمرینی</p>
             </div>
+
         </header>
 
 
@@ -35,7 +37,7 @@
                     </div>
 
                     <div class="stat-card">
-                        <span class="stat-number">0</span>
+                        <span class="stat-number" id="programCount">0</span>
                         <span class="stat-label">برنامه</span>
                     </div>
 
@@ -51,7 +53,10 @@
 
                 <div class="quick-actions">
 
-                    <button class="action-card" id="addClientButton">
+                    <button
+                        class="action-card"
+                        id="addClientButton"
+                    >
                         + افزودن شاگرد
                     </button>
 
@@ -80,15 +85,23 @@
 
 
             <!-- Client Profile -->
-            <section class="client-profile" id="clientProfile">
+            <section
+                class="client-profile"
+                id="clientProfile"
+            >
 
-                <button id="backButton" class="back-button">
+                <button
+                    id="backButton"
+                    class="back-button"
+                >
                     → برگشت
                 </button>
+
 
                 <h2 id="profileName">
                     نام شاگرد
                 </h2>
+
 
                 <div class="profile-card">
 
@@ -115,12 +128,15 @@
                 </div>
 
 
-                <!-- Programs Section -->
+                <!-- Programs -->
                 <div class="profile-section-header">
 
                     <h2>برنامه‌های تمرینی</h2>
 
-                    <button id="addProgramButton" class="small-button">
+                    <button
+                        id="addProgramButton"
+                        class="small-button"
+                    >
                         + برنامه جدید
                     </button>
 
@@ -164,7 +180,10 @@
 
 
     <!-- Add Client Modal -->
-    <div class="modal" id="clientModal">
+    <div
+        class="modal"
+        id="clientModal"
+    >
 
         <div class="modal-box">
 
@@ -244,7 +263,10 @@
 
 
     <!-- Add Program Modal -->
-    <div class="modal" id="programModal">
+    <div
+        class="modal"
+        id="programModal"
+    >
 
         <div class="modal-box">
 
@@ -281,6 +303,29 @@
                 id="programNotes"
                 placeholder="توضیحات کلی برنامه..."
             ></textarea>
+
+
+            <!-- Training Days -->
+            <div class="program-days-section">
+
+                <div class="program-days-header">
+
+                    <h3>جلسه‌های تمرینی</h3>
+
+                    <button
+                        type="button"
+                        id="addDayButton"
+                        class="small-button"
+                    >
+                        + افزودن جلسه
+                    </button>
+
+                </div>
+
+
+                <div id="daysContainer"></div>
+
+            </div>
 
 
             <div class="form-buttons">
