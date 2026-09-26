@@ -2,18 +2,27 @@
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
 
     font-family: Tahoma, Arial, sans-serif;
 
     background-color: #f3f4f6;
+
     color: #111827;
+}
+
+
+button,
+input {
+    font-family: inherit;
 }
 
 
 .app {
     max-width: 900px;
+
     margin: auto;
 
     min-height: 100vh;
@@ -32,16 +41,19 @@ body {
     border-bottom: 1px solid #e5e7eb;
 }
 
+
 .topbar h1 {
     margin: 0;
 
     font-size: 24px;
 }
 
+
 .topbar p {
     margin: 6px 0 0;
 
     color: #6b7280;
+
     font-size: 14px;
 }
 
@@ -63,6 +75,7 @@ body {
     gap: 10px;
 }
 
+
 .stat-card {
     background-color: white;
 
@@ -75,12 +88,15 @@ body {
     border: 1px solid #e5e7eb;
 }
 
+
 .stat-number {
     display: block;
 
     font-size: 26px;
+
     font-weight: bold;
 }
+
 
 .stat-label {
     display: block;
@@ -99,6 +115,7 @@ h2 {
     font-size: 17px;
 
     margin-top: 28px;
+
     margin-bottom: 12px;
 }
 
@@ -113,18 +130,21 @@ h2 {
     gap: 10px;
 }
 
+
 .action-card {
     background-color: white;
 
     padding: 18px 10px;
 
     border: 1px solid #e5e7eb;
+
     border-radius: 14px;
 
     cursor: pointer;
 
     font-weight: bold;
 }
+
 
 .action-card:hover {
     background-color: #f9fafb;
@@ -148,56 +168,80 @@ h2 {
 }
 
 
-/* Bottom Navigation */
+/* Client Card */
 
-.bottom-nav {
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
+.client-card {
     background-color: white;
 
-    border-top: 1px solid #e5e7eb;
-}
+    padding: 16px;
 
-.nav-button {
-    padding: 16px 5px;
+    border: 1px solid #e5e7eb;
 
-    border: none;
+    border-radius: 14px;
 
-    background: none;
-
-    color: #6b7280;
+    margin-bottom: 10px;
 
     cursor: pointer;
 }
 
-.nav-button.active {
-    color: #111827;
 
-    font-weight: bold;
+.client-card:hover {
+    background-color: #f9fafb;
 }
 
 
-/* Mobile */
+.client-card h3 {
+    margin: 0;
 
-@media (max-width: 600px) {
-
-    .stats {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .quick-actions {
-        grid-template-columns: 1fr;
-    }
-
+    font-size: 16px;
 }
+
+
+.client-card p {
+    margin: 6px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* Client Profile */
+
+.client-profile {
+    display: none;
+}
+
+
+.profile-card {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 16px;
+}
+
+
+.profile-card p {
+    margin: 10px 0;
+}
+
+
+.back-button {
+    border: none;
+
+    background-color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
 /* Modal */
 
 .modal {
@@ -207,6 +251,7 @@ h2 {
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     background-color: rgba(0, 0, 0, 0.45);
@@ -214,6 +259,7 @@ h2 {
     display: none;
 
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
@@ -229,6 +275,7 @@ h2 {
 
 .modal-box {
     width: 100%;
+
     max-width: 450px;
 
     background-color: white;
@@ -248,9 +295,11 @@ h2 {
     display: block;
 
     margin-top: 14px;
+
     margin-bottom: 6px;
 
     font-size: 13px;
+
     color: #4b5563;
 }
 
@@ -261,6 +310,7 @@ h2 {
     padding: 12px;
 
     border: 1px solid #d1d5db;
+
     border-radius: 10px;
 
     font-size: 16px;
@@ -286,6 +336,7 @@ h2 {
     border-radius: 10px;
 
     background-color: #111827;
+
     color: white;
 
     cursor: pointer;
@@ -294,68 +345,61 @@ h2 {
 
 .form-buttons .cancel-button {
     background-color: #e5e7eb;
+
     color: #111827;
 }
 
 
-/* Client Card */
+/* Bottom Navigation */
 
-.client-card {
+.bottom-nav {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
     background-color: white;
 
-    padding: 16px;
-
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-
-    margin-bottom: 10px;
+    border-top: 1px solid #e5e7eb;
 }
 
 
-.client-card h3 {
-    margin: 0;
+.nav-button {
+    padding: 16px 5px;
 
-    font-size: 16px;
-}
+    border: none;
 
-
-.client-card p {
-    margin: 6px 0 0;
+    background: none;
 
     color: #6b7280;
 
-    font-size: 13px;
-}
-.client-profile {
-    display: none;
-}
-
-
-.profile-card {
-    background-color: white;
-
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-
-    padding: 16px;
-}
-
-
-.profile-card p {
-    margin: 10px 0;
-}
-
-
-.back-button {
-    border: none;
-
-    background-color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-
     cursor: pointer;
+}
 
-    margin-bottom: 10px;
+
+.nav-button.active {
+    color: #111827;
+
+    font-weight: bold;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
 }
