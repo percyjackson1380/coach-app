@@ -115,10 +115,24 @@
                 </div>
 
 
-                <h2>برنامه‌های تمرینی</h2>
+                <!-- Programs Section -->
+                <div class="profile-section-header">
 
-                <div class="empty-box">
-                    هنوز برنامه‌ای برای این شاگرد ثبت نشده است.
+                    <h2>برنامه‌های تمرینی</h2>
+
+                    <button id="addProgramButton" class="small-button">
+                        + برنامه جدید
+                    </button>
+
+                </div>
+
+
+                <div id="programList">
+
+                    <div class="empty-box">
+                        هنوز برنامه‌ای برای این شاگرد ثبت نشده است.
+                    </div>
+
                 </div>
 
             </section>
@@ -217,6 +231,66 @@
 
                 <button
                     id="cancelClientButton"
+                    class="cancel-button"
+                >
+                    لغو
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Add Program Modal -->
+    <div class="modal" id="programModal">
+
+        <div class="modal-box">
+
+            <h2>برنامه جدید</h2>
+
+
+            <label for="programTitle">
+                عنوان برنامه
+            </label>
+
+            <input
+                type="text"
+                id="programTitle"
+                placeholder="مثلاً برنامه مهر"
+            >
+
+
+            <label for="programGoal">
+                هدف برنامه
+            </label>
+
+            <input
+                type="text"
+                id="programGoal"
+                placeholder="مثلاً افزایش حجم"
+            >
+
+
+            <label for="programNotes">
+                توضیحات
+            </label>
+
+            <textarea
+                id="programNotes"
+                placeholder="توضیحات کلی برنامه..."
+            ></textarea>
+
+
+            <div class="form-buttons">
+
+                <button id="saveProgramButton">
+                    ذخیره
+                </button>
+
+                <button
+                    id="cancelProgramButton"
                     class="cancel-button"
                 >
                     لغو

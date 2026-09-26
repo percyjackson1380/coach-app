@@ -403,3 +403,80 @@ h2 {
     }
 
 }
+.profile-section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+
+.profile-section-header h2 {
+    margin: 0;
+}
+
+
+.small-button {
+    border: none;
+
+    background-color: #111827;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.modal-box textarea {
+    width: 100%;
+
+    min-height: 100px;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    resize: vertical;
+}
+
+
+.program-card {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    margin-bottom: 10px;
+}
+
+
+.program-card h3 {
+    margin: 0 0 6px;
+}
+
+
+.program-card p {
+    margin: 5px 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}

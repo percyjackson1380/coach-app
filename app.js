@@ -27,19 +27,38 @@ const backButton =
     document.getElementById("backButton");
 
 
+const addProgramButton =
+    document.getElementById("addProgramButton");
 
-/*
-    Load clients from Chrome.
+const programModal =
+    document.getElementById("programModal");
 
-    If there are no saved clients,
-    use an empty array.
-*/
+const saveProgramButton =
+    document.getElementById("saveProgramButton");
+
+const cancelProgramButton =
+    document.getElementById("cancelProgramButton");
+
+const programList =
+    document.getElementById("programList");
+
+
+
 let clients =
     JSON.parse(localStorage.getItem("clients")) || [];
 
 
+let programs =
+    JSON.parse(localStorage.getItem("programs")) || [];
 
-/* Open Add Client Modal */
+
+let currentClientId = null;
+
+
+
+/* -------------------------
+   CLIENT MODAL
+------------------------- */
 
 addClientButton.addEventListener("click", function () {
 
@@ -47,9 +66,6 @@ addClientButton.addEventListener("click", function () {
 
 });
 
-
-
-/* Close Modal */
 
 cancelClientButton.addEventListener("click", function () {
 
@@ -59,7 +75,9 @@ cancelClientButton.addEventListener("click", function () {
 
 
 
-/* Save Client */
+/* -------------------------
+   SAVE CLIENT
+------------------------- */
 
 saveClientButton.addEventListener("click", function () {
 
@@ -91,6 +109,7 @@ saveClientButton.addEventListener("click", function () {
 
 
     const newClient = {
+
         id: Date.now(),
 
         name: name,
@@ -113,26 +132,21 @@ saveClientButton.addEventListener("click", function () {
 
     saveClients();
 
-
-
     renderClients();
 
 
 
     clientModal.classList.remove("show");
 
-
-
-    clearForm();
+    clearClientForm();
 
 });
 
 
 
-/*
-    Save the clients array
-    inside Chrome.
-*/
+/* -------------------------
+   SAVE CLIENTS
+------------------------- */
 
 function saveClients() {
 
@@ -145,10 +159,9 @@ function saveClients() {
 
 
 
-/*
-    Display all clients
-    on the dashboard.
-*/
+/* -------------------------
+   RENDER CLIENTS
+------------------------- */
 
 function renderClients() {
 
@@ -228,11 +241,14 @@ function renderClients() {
 
 
 
-/*
-    Open a client's profile.
-*/
+/* -------------------------
+   OPEN CLIENT PROFILE
+------------------------- */
 
 function openClientProfile(client) {
+
+    currentClientId = client.id;
+
 
     dashboard.style.display = "none";
 
@@ -273,11 +289,17 @@ function openClientProfile(client) {
     ).textContent =
         client.goal || "-";
 
+
+
+    renderPrograms();
+
 }
 
 
 
-/* Back to Dashboard */
+/* -------------------------
+   BACK TO DASHBOARD
+------------------------- */
 
 backButton.addEventListener(
     "click",
@@ -287,14 +309,229 @@ backButton.addEventListener(
 
         dashboard.style.display = "block";
 
+        currentClientId = null;
+
     }
 );
 
 
 
-/* Clear Add Client Form */
+/* -------------------------
+   PROGRAM MODAL
+------------------------- */
 
-function clearForm() {
+addProgramButton.addEventListener(
+    "click",
+    function () {
+
+        programModal.classList.add("show");
+
+    }
+);
+
+
+cancelProgramButton.addEventListener(
+    "click",
+    function () {
+
+        programModal.classList.remove("show");
+
+    }
+);
+
+
+
+/* -------------------------
+   SAVE PROGRAM
+------------------------- */
+
+saveProgramButton.addEventListener(
+    "click",
+    function () {
+
+        const title =
+            document.getElementById("programTitle")
+            .value
+            .trim();
+
+        const goal =
+            document.getElementById("programGoal")
+            .value
+            .trim();
+
+        const notes =
+            document.getElementById("programNotes")
+            .value
+            .trim();
+
+
+
+        if (title === "") {
+
+            alert("عنوان برنامه را وارد کنید");
+
+            return;
+
+        }
+
+
+
+        if (currentClientId === null) {
+
+            alert("شاگرد انتخاب نشده است");
+
+            return;
+
+        }
+
+
+
+        const newProgram = {
+
+            id: Date.now(),
+
+            clientId: currentClientId,
+
+            title: title,
+
+            goal: goal,
+
+            notes: notes
+
+        };
+
+
+
+        programs.push(newProgram);
+
+
+
+        savePrograms();
+
+        renderPrograms();
+
+        updateProgramCount();
+
+
+
+        programModal.classList.remove("show");
+
+        clearProgramForm();
+
+    }
+);
+
+
+
+/* -------------------------
+   SAVE PROGRAMS
+------------------------- */
+
+function savePrograms() {
+
+    localStorage.setItem(
+        "programs",
+        JSON.stringify(programs)
+    );
+
+}
+
+
+
+/* -------------------------
+   RENDER PROGRAMS
+------------------------- */
+
+function renderPrograms() {
+
+    const clientPrograms =
+        programs.filter(function (program) {
+
+            return program.clientId === currentClientId;
+
+        });
+
+
+
+    if (clientPrograms.length === 0) {
+
+        programList.innerHTML = `
+
+            <div class="empty-box">
+                هنوز برنامه‌ای برای این شاگرد ثبت نشده است.
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    programList.innerHTML = "";
+
+
+
+    clientPrograms.forEach(function (program) {
+
+        const card =
+            document.createElement("div");
+
+
+
+        card.classList.add("program-card");
+
+
+
+        card.innerHTML = `
+
+            <h3>
+                ${program.title}
+            </h3>
+
+            <p>
+                هدف:
+                ${program.goal || "-"}
+            </p>
+
+            <p>
+                ${program.notes || "بدون توضیحات"}
+            </p>
+
+        `;
+
+
+
+        programList.appendChild(card);
+
+    });
+
+}
+
+
+
+/* -------------------------
+   UPDATE PROGRAM COUNT
+------------------------- */
+
+function updateProgramCount() {
+
+    const statNumbers =
+        document.querySelectorAll(".stat-number");
+
+    statNumbers[1].textContent =
+        programs.length;
+
+}
+
+
+
+/* -------------------------
+   CLEAR CLIENT FORM
+------------------------- */
+
+function clearClientForm() {
 
     document.getElementById(
         "clientName"
@@ -320,8 +557,32 @@ function clearForm() {
 
 
 
-/*
-    Run once when the app opens.
-*/
+/* -------------------------
+   CLEAR PROGRAM FORM
+------------------------- */
+
+function clearProgramForm() {
+
+    document.getElementById(
+        "programTitle"
+    ).value = "";
+
+    document.getElementById(
+        "programGoal"
+    ).value = "";
+
+    document.getElementById(
+        "programNotes"
+    ).value = "";
+
+}
+
+
+
+/* -------------------------
+   START APP
+------------------------- */
 
 renderClients();
+
+updateProgramCount();
