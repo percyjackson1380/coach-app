@@ -91,6 +91,7 @@ saveClientButton.addEventListener("click", function () {
 
 
     const newClient = {
+        id: Date.now(),
 
         name: name,
 
