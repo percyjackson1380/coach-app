@@ -16,7 +16,8 @@ body {
 
 button,
 input,
-textarea {
+textarea,
+select {
     font-family: inherit;
 }
 
@@ -35,6 +36,7 @@ button {
 
     padding-bottom: 80px;
 }
+
 
 
 /* =========================
@@ -66,13 +68,60 @@ button {
 }
 
 
+
 /* =========================
-   CONTENT
+   VIEWS
 ========================= */
 
 .content {
     padding: 16px;
 }
+
+
+.view {
+    display: none;
+}
+
+
+.view.active {
+    display: block;
+}
+
+
+
+/* =========================
+   TITLES
+========================= */
+
+h2 {
+    font-size: 18px;
+
+    margin-top: 28px;
+
+    margin-bottom: 12px;
+}
+
+
+h3 {
+    font-size: 15px;
+}
+
+
+.no-top-margin {
+    margin-top: 0;
+}
+
+
+.section-description {
+    margin-top: -5px;
+
+    color: #6b7280;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
 
 
 /* =========================
@@ -91,7 +140,7 @@ button {
 .stat-card {
     background-color: white;
 
-    padding: 18px;
+    padding: 18px 10px;
 
     border-radius: 14px;
 
@@ -121,17 +170,56 @@ button {
 }
 
 
+
 /* =========================
-   TITLES
+   BUTTONS
 ========================= */
 
-h2 {
-    font-size: 17px;
+.primary-button {
+    border: none;
 
-    margin-top: 28px;
+    background-color: #111827;
 
-    margin-bottom: 12px;
+    color: white;
+
+    padding: 11px 14px;
+
+    border-radius: 10px;
 }
+
+
+.primary-button.small {
+    padding: 8px 12px;
+
+    font-size: 12px;
+}
+
+
+.secondary-button {
+    border: 1px solid #d1d5db;
+
+    background-color: white;
+
+    color: #111827;
+
+    padding: 11px 14px;
+
+    border-radius: 10px;
+}
+
+
+.back-button {
+    border: 1px solid #e5e7eb;
+
+    background-color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    margin-bottom: 8px;
+}
+
 
 
 /* =========================
@@ -141,7 +229,7 @@ h2 {
 .quick-actions {
     display: grid;
 
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
 
     gap: 10px;
 }
@@ -160,19 +248,15 @@ h2 {
 }
 
 
-.action-card:hover {
-    background-color: #f9fafb;
-}
-
 
 /* =========================
-   EMPTY BOX
+   EMPTY
 ========================= */
 
 .empty-box {
     background-color: white;
 
-    padding: 30px;
+    padding: 26px 15px;
 
     border-radius: 14px;
 
@@ -181,14 +265,19 @@ h2 {
     text-align: center;
 
     color: #6b7280;
+
+    font-size: 13px;
 }
 
 
+
 /* =========================
-   CLIENT CARD
+   CLIENT
 ========================= */
 
-.client-card {
+.client-card,
+.program-card,
+.library-exercise-card {
     background-color: white;
 
     padding: 16px;
@@ -198,40 +287,41 @@ h2 {
     border-radius: 14px;
 
     margin-bottom: 10px;
+}
 
+
+.client-card,
+.program-card {
     cursor: pointer;
 }
 
 
-.client-card:hover {
-    background-color: #f9fafb;
-}
-
-
-.client-card h3 {
-    margin: 0;
+.client-card h3,
+.program-card h3,
+.library-exercise-card h3 {
+    margin: 0 0 7px;
 
     font-size: 16px;
 }
 
 
-.client-card p {
-    margin: 6px 0 0;
+.client-card p,
+.program-card p,
+.library-exercise-card p {
+    margin: 5px 0;
 
     color: #6b7280;
 
     font-size: 13px;
+
+    line-height: 1.7;
 }
+
 
 
 /* =========================
-   CLIENT PROFILE
+   PROFILE
 ========================= */
-
-.client-profile {
-    display: none;
-}
-
 
 .profile-card {
     background-color: white;
@@ -249,108 +339,29 @@ h2 {
 }
 
 
-/* =========================
-   BACK BUTTON
-========================= */
-
-.back-button {
-    border: none;
-
-    background-color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-
-    margin-bottom: 10px;
-}
-
-
-/* =========================
-   PROFILE SECTION
-========================= */
-
-.profile-section-header {
+.section-header {
     display: flex;
 
     justify-content: space-between;
 
     align-items: center;
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-top: 28px;
+    margin-top: 25px;
 }
 
 
-.profile-section-header h2 {
+.section-header h2,
+.section-header h3 {
     margin: 0;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
-
-.small-button {
-    border: none;
-
-    background-color: #111827;
-
-    color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-}
-
-
-/* =========================
-   PROGRAM CARD
-========================= */
-
-.program-card {
-    background-color: white;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 14px;
-
-    padding: 16px;
-
-    margin-bottom: 10px;
-
-    cursor: pointer;
-}
-
-
-.program-card:hover {
-    background-color: #f9fafb;
-}
-
-
-.program-card h3 {
-    margin: 0 0 8px;
-}
-
-
-.program-card p {
-    margin: 5px 0;
-
-    color: #6b7280;
-
-    font-size: 13px;
-}
 
 
 /* =========================
    PROGRAM DETAIL
 ========================= */
-
-.program-detail {
-    display: none;
-}
-
 
 .program-detail-header {
     background-color: white;
@@ -372,11 +383,14 @@ h2 {
     margin: 6px 0;
 
     color: #6b7280;
+
+    line-height: 1.7;
 }
 
 
+
 /* =========================
-   TRAINING DAY CARD
+   TRAINING DAY
 ========================= */
 
 .training-day-card {
@@ -399,7 +413,7 @@ h2 {
 
     align-items: center;
 
-    gap: 12px;
+    gap: 10px;
 
     margin-bottom: 12px;
 }
@@ -407,9 +421,8 @@ h2 {
 
 .training-day-header h3 {
     margin: 0;
-
-    font-size: 16px;
 }
+
 
 
 /* =========================
@@ -469,6 +482,65 @@ h2 {
 }
 
 
+
+/* =========================
+   EXERCISE LIBRARY
+========================= */
+
+.library-actions {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 14px;
+}
+
+
+.filter-box {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 15px;
+}
+
+
+.filter-box input,
+.filter-box select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    background-color: white;
+
+    font-size: 15px;
+}
+
+
+.category-badge {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    background-color: #f3f4f6;
+
+    border-radius: 20px;
+
+    color: #4b5563;
+
+    font-size: 11px;
+}
+
+
+
 /* =========================
    MODAL
 ========================= */
@@ -476,12 +548,7 @@ h2 {
 .modal {
     position: fixed;
 
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
-    height: 100%;
+    inset: 0;
 
     background-color: rgba(0, 0, 0, 0.45);
 
@@ -540,7 +607,8 @@ h2 {
 
 
 .modal-box input,
-.modal-box textarea {
+.modal-box textarea,
+.modal-box select {
     width: 100%;
 
     padding: 12px;
@@ -548,6 +616,8 @@ h2 {
     border: 1px solid #d1d5db;
 
     border-radius: 10px;
+
+    background-color: white;
 
     font-size: 16px;
 }
@@ -560,10 +630,6 @@ h2 {
 }
 
 
-/* =========================
-   FORM GRID
-========================= */
-
 .form-grid {
     display: grid;
 
@@ -572,10 +638,6 @@ h2 {
     gap: 10px;
 }
 
-
-/* =========================
-   FORM BUTTONS
-========================= */
 
 .form-buttons {
     display: flex;
@@ -608,8 +670,20 @@ h2 {
 }
 
 
+.or-divider {
+    margin: 16px 0 0;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+
 /* =========================
-   PROGRAM DAYS BUILDER
+   PROGRAM DAY BUILDER
 ========================= */
 
 .program-days-section {
@@ -618,24 +692,6 @@ h2 {
     padding-top: 18px;
 
     border-top: 1px solid #e5e7eb;
-}
-
-
-.program-days-header {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-
-.program-days-header h3 {
-    margin: 0;
-
-    font-size: 15px;
 }
 
 
@@ -666,15 +722,18 @@ h2 {
 }
 
 
+
 /* =========================
-   BOTTOM NAV
+   NAV
 ========================= */
 
 .bottom-nav {
     position: fixed;
 
     bottom: 0;
+
     left: 0;
+
     right: 0;
 
     display: grid;
@@ -684,6 +743,8 @@ h2 {
     background-color: white;
 
     border-top: 1px solid #e5e7eb;
+
+    z-index: 50;
 }
 
 
@@ -706,10 +767,11 @@ h2 {
 
 
 .nav-button:disabled {
-    cursor: default;
+    opacity: 0.45;
 
-    opacity: 0.55;
+    cursor: default;
 }
+
 
 
 /* =========================
@@ -718,13 +780,13 @@ h2 {
 
 @media (max-width: 600px) {
 
-    .stats {
-        grid-template-columns: repeat(3, 1fr);
+    .quick-actions {
+        grid-template-columns: 1fr;
     }
 
 
-    .form-grid {
-        grid-template-columns: 1fr 1fr;
+    .filter-box {
+        grid-template-columns: 1fr;
     }
 
 
@@ -733,8 +795,8 @@ h2 {
     }
 
 
-    .training-day-header .small-button {
-        white-space: nowrap;
+    .section-header {
+        align-items: flex-start;
     }
 
 }

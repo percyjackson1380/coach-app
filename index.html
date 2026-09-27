@@ -14,6 +14,10 @@
 
     <div class="app">
 
+        <!-- =========================
+             HEADER
+        ========================== -->
+
         <header class="topbar">
 
             <div>
@@ -26,12 +30,13 @@
 
         <main class="content">
 
+
             <!-- =========================
                  DASHBOARD
             ========================== -->
 
             <section
-                class="dashboard"
+                class="view"
                 id="dashboard"
             >
 
@@ -99,6 +104,13 @@
                         + افزودن شاگرد
                     </button>
 
+                    <button
+                        class="action-card"
+                        id="dashboardAddExerciseButton"
+                    >
+                        + افزودن حرکت
+                    </button>
+
                 </div>
 
 
@@ -122,7 +134,7 @@
             ========================== -->
 
             <section
-                class="client-profile"
+                class="view"
                 id="clientProfile"
             >
 
@@ -143,52 +155,36 @@
 
                     <p>
                         <strong>شماره تماس:</strong>
-
-                        <span id="profilePhone">
-                            -
-                        </span>
+                        <span id="profilePhone">-</span>
                     </p>
-
 
                     <p>
                         <strong>سن:</strong>
-
-                        <span id="profileAge">
-                            -
-                        </span>
+                        <span id="profileAge">-</span>
                     </p>
-
 
                     <p>
                         <strong>وزن:</strong>
-
-                        <span id="profileWeight">
-                            -
-                        </span>
+                        <span id="profileWeight">-</span>
                     </p>
-
 
                     <p>
                         <strong>هدف:</strong>
-
-                        <span id="profileGoal">
-                            -
-                        </span>
+                        <span id="profileGoal">-</span>
                     </p>
 
                 </div>
 
 
-                <div class="profile-section-header">
+                <div class="section-header">
 
                     <h2>
                         برنامه‌های تمرینی
                     </h2>
 
-
                     <button
                         id="addProgramButton"
-                        class="small-button"
+                        class="primary-button"
                     >
                         + برنامه جدید
                     </button>
@@ -196,13 +192,7 @@
                 </div>
 
 
-                <div id="programList">
-
-                    <div class="empty-box">
-                        هنوز برنامه‌ای برای این شاگرد ثبت نشده است.
-                    </div>
-
-                </div>
+                <div id="programList"></div>
 
             </section>
 
@@ -213,7 +203,7 @@
             ========================== -->
 
             <section
-                class="program-detail"
+                class="view"
                 id="programDetail"
             >
 
@@ -247,6 +237,77 @@
 
             </section>
 
+
+
+            <!-- =========================
+                 EXERCISE LIBRARY
+            ========================== -->
+
+            <section
+                class="view"
+                id="exerciseLibraryView"
+            >
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2 class="no-top-margin">
+                            کتابخانه حرکات
+                        </h2>
+
+                        <p class="section-description">
+                            حرکات پرکاربرد را یک بار ذخیره کنید و در برنامه‌ها دوباره استفاده کنید.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="library-actions">
+
+                    <button
+                        class="primary-button"
+                        id="addLibraryExerciseButton"
+                    >
+                        + حرکت جدید
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="addCategoryButton"
+                    >
+                        + دسته‌بندی جدید
+                    </button>
+
+                </div>
+
+
+                <div class="filter-box">
+
+                    <input
+                        type="text"
+                        id="exerciseSearch"
+                        placeholder="جستجوی حرکت..."
+                    >
+
+
+                    <select id="categoryFilter">
+
+                        <option value="">
+                            همه دسته‌بندی‌ها
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div id="exerciseLibraryList"></div>
+
+            </section>
+
         </main>
 
 
@@ -267,7 +328,7 @@
 
             <button
                 class="nav-button"
-                disabled
+                id="clientsButton"
             >
                 شاگردها
             </button>
@@ -275,7 +336,7 @@
 
             <button
                 class="nav-button"
-                disabled
+                id="exercisesButton"
             >
                 حرکات
             </button>
@@ -330,25 +391,37 @@
             >
 
 
-            <label for="clientAge">
-                سن
-            </label>
+            <div class="form-grid">
 
-            <input
-                type="number"
-                id="clientAge"
-            >
+                <div>
+
+                    <label for="clientAge">
+                        سن
+                    </label>
+
+                    <input
+                        type="number"
+                        id="clientAge"
+                    >
+
+                </div>
 
 
-            <label for="clientWeight">
-                وزن
-            </label>
+                <div>
 
-            <input
-                type="text"
-                id="clientWeight"
-                placeholder="مثلاً 82 kg"
-            >
+                    <label for="clientWeight">
+                        وزن
+                    </label>
+
+                    <input
+                        type="text"
+                        id="clientWeight"
+                        placeholder="82 kg"
+                    >
+
+                </div>
+
+            </div>
 
 
             <label for="clientGoal">
@@ -432,9 +505,10 @@
             ></textarea>
 
 
+
             <div class="program-days-section">
 
-                <div class="program-days-header">
+                <div class="section-header">
 
                     <h3>
                         جلسه‌های تمرینی
@@ -444,9 +518,9 @@
                     <button
                         type="button"
                         id="addDayButton"
-                        class="small-button"
+                        class="primary-button small"
                     >
-                        + افزودن جلسه
+                        + جلسه
                     </button>
 
                 </div>
@@ -455,6 +529,7 @@
                 <div id="daysContainer"></div>
 
             </div>
+
 
 
             <div class="form-buttons">
@@ -480,7 +555,7 @@
 
 
     <!-- =========================
-         ADD EXERCISE MODAL
+         ADD EXERCISE TO PROGRAM
     ========================== -->
 
     <div
@@ -491,8 +566,26 @@
         <div class="modal-box">
 
             <h2>
-                افزودن حرکت
+                افزودن حرکت به جلسه
             </h2>
+
+
+            <label for="libraryExerciseSelect">
+                انتخاب از کتابخانه
+            </label>
+
+            <select id="libraryExerciseSelect">
+
+                <option value="">
+                    -- حرکت را انتخاب کنید --
+                </option>
+
+            </select>
+
+
+            <div class="or-divider">
+                یا
+            </div>
 
 
             <label for="exerciseName">
@@ -551,7 +644,7 @@
                     <input
                         type="text"
                         id="exerciseWeight"
-                        placeholder="مثلاً 70 kg"
+                        placeholder="70 kg"
                     >
 
                 </div>
@@ -566,7 +659,7 @@
                     <input
                         type="text"
                         id="exerciseRest"
-                        placeholder="مثلاً 90 ثانیه"
+                        placeholder="90 ثانیه"
                     >
 
                 </div>
@@ -593,6 +686,121 @@
 
                 <button
                     id="cancelExerciseButton"
+                    class="cancel-button"
+                >
+                    لغو
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         LIBRARY EXERCISE MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="libraryExerciseModal"
+    >
+
+        <div class="modal-box">
+
+            <h2>
+                حرکت جدید
+            </h2>
+
+
+            <label for="libraryExerciseName">
+                نام حرکت
+            </label>
+
+            <input
+                type="text"
+                id="libraryExerciseName"
+                placeholder="مثلاً Romanian Deadlift"
+            >
+
+
+            <label for="libraryExerciseCategory">
+                دسته‌بندی
+            </label>
+
+            <select id="libraryExerciseCategory"></select>
+
+
+            <label for="libraryExerciseNote">
+                یادداشت پیش‌فرض
+            </label>
+
+            <textarea
+                id="libraryExerciseNote"
+                placeholder="مثلاً کنترل حرکت، دامنه کامل..."
+            ></textarea>
+
+
+            <div class="form-buttons">
+
+                <button id="saveLibraryExerciseButton">
+                    ذخیره حرکت
+                </button>
+
+
+                <button
+                    id="cancelLibraryExerciseButton"
+                    class="cancel-button"
+                >
+                    لغو
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CATEGORY MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="categoryModal"
+    >
+
+        <div class="modal-box">
+
+            <h2>
+                دسته‌بندی جدید
+            </h2>
+
+
+            <label for="newCategoryName">
+                نام دسته‌بندی
+            </label>
+
+            <input
+                type="text"
+                id="newCategoryName"
+                placeholder="مثلاً اصلاحی"
+            >
+
+
+            <div class="form-buttons">
+
+                <button id="saveCategoryButton">
+                    ذخیره
+                </button>
+
+
+                <button
+                    id="cancelCategoryButton"
                     class="cancel-button"
                 >
                     لغو
