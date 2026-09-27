@@ -1,16 +1,68 @@
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+    --bg: #f4f6f8;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+
+    --text: #111827;
+    --text-soft: #6b7280;
+    --text-light: #9ca3af;
+
+    --border: #e5e7eb;
+    --border-strong: #d1d5db;
+
+    --primary: #111827;
+    --primary-hover: #1f2937;
+
+    --danger: #b91c1c;
+    --danger-bg: #fff7f7;
+    --danger-border: #fecaca;
+
+    --radius-small: 10px;
+    --radius-medium: 14px;
+    --radius-large: 18px;
+
+    --shadow-small:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 1px 4px rgba(0, 0, 0, 0.03);
+
+    --shadow-medium:
+        0 6px 18px rgba(0, 0, 0, 0.06);
+
+    --nav-height: 68px;
+}
+
+
 * {
     box-sizing: border-box;
+}
+
+
+html {
+    -webkit-text-size-adjust: 100%;
 }
 
 
 body {
     margin: 0;
 
-    font-family: Tahoma, Arial, sans-serif;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
 
-    background-color: #f3f4f6;
+    background-color: var(--bg);
 
-    color: #111827;
+    color: var(--text);
+
+    direction: rtl;
+
+    line-height: 1.6;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -24,17 +76,43 @@ select {
 
 button {
     cursor: pointer;
+
+    touch-action: manipulation;
+}
+
+
+input,
+textarea,
+select {
+    color: var(--text);
+}
+
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(17, 24, 39, 0.14);
+
+    outline-offset: 2px;
 }
 
 
 .app {
-    max-width: 900px;
+    width: 100%;
 
-    margin: auto;
+    max-width: 900px;
 
     min-height: 100vh;
 
-    padding-bottom: 80px;
+    margin: 0 auto;
+
+    padding-bottom:
+        calc(
+            var(--nav-height) +
+            22px +
+            env(safe-area-inset-bottom)
+        );
 }
 
 
@@ -44,33 +122,55 @@ button {
 ========================= */
 
 .topbar {
-    background-color: white;
+    position: sticky;
 
-    padding: 20px;
+    top: 0;
 
-    border-bottom: 1px solid #e5e7eb;
+    z-index: 30;
+
+    background-color:
+        rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    padding:
+        18px
+        18px
+        16px;
+
+    border-bottom:
+        1px solid var(--border);
 }
 
 
 .topbar h1 {
     margin: 0;
 
-    font-size: 24px;
+    font-size: 23px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
 }
 
 
 .topbar p {
-    margin: 6px 0 0;
+    margin:
+        4px
+        0
+        0;
 
-    color: #6b7280;
+    color: var(--text-soft);
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 
 
 /* =========================
-   VIEWS
+   MAIN CONTENT
 ========================= */
 
 .content {
@@ -94,16 +194,26 @@ button {
 ========================= */
 
 h2 {
+    margin:
+        26px
+        0
+        12px;
+
     font-size: 18px;
 
-    margin-top: 28px;
-
-    margin-bottom: 12px;
+    font-weight: 800;
 }
 
 
 h3 {
     font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+h4 {
+    font-weight: 700;
 }
 
 
@@ -113,9 +223,12 @@ h3 {
 
 
 .section-description {
-    margin-top: -5px;
+    margin:
+        -5px
+        0
+        14px;
 
-    color: #6b7280;
+    color: var(--text-soft);
 
     font-size: 13px;
 
@@ -131,22 +244,30 @@ h3 {
 .stats {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
     gap: 10px;
 }
 
 
 .stat-card {
-    background-color: white;
+    background-color: var(--surface);
 
-    padding: 18px 10px;
+    border:
+        1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius:
+        var(--radius-medium);
+
+    padding:
+        17px
+        8px;
 
     text-align: center;
 
-    border: 1px solid #e5e7eb;
+    box-shadow:
+        var(--shadow-small);
 }
 
 
@@ -155,7 +276,9 @@ h3 {
 
     font-size: 26px;
 
-    font-weight: bold;
+    line-height: 1.2;
+
+    font-weight: 800;
 }
 
 
@@ -164,9 +287,9 @@ h3 {
 
     margin-top: 5px;
 
-    color: #6b7280;
+    color: var(--text-soft);
 
-    font-size: 13px;
+    font-size: 12px;
 }
 
 
@@ -175,64 +298,113 @@ h3 {
    BUTTONS
 ========================= */
 
-.primary-button {
-    border: none;
+.primary-button,
+.secondary-button,
+.danger-button,
+.back-button {
+    min-height: 44px;
 
-    background-color: #111827;
+    padding:
+        10px
+        15px;
+
+    border-radius:
+        var(--radius-small);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.12s ease,
+        background-color 0.12s ease,
+        border-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+.primary-button {
+    border:
+        1px solid var(--primary);
+
+    background-color:
+        var(--primary);
 
     color: white;
+}
 
-    padding: 11px 14px;
 
-    border-radius: 10px;
+.primary-button:hover {
+    background-color:
+        var(--primary-hover);
+}
+
+
+.secondary-button {
+    border:
+        1px solid var(--border-strong);
+
+    background-color:
+        var(--surface);
+
+    color:
+        var(--text);
+}
+
+
+.secondary-button:hover {
+    background-color:
+        var(--surface-soft);
+}
+
+
+.danger-button {
+    border:
+        1px solid var(--danger-border);
+
+    background-color:
+        var(--danger-bg);
+
+    color:
+        var(--danger);
+}
+
+
+.danger-button:hover {
+    background-color:
+        #feecec;
+}
+
+
+.back-button {
+    border:
+        1px solid var(--border);
+
+    background-color:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    margin-bottom: 10px;
 }
 
 
 .primary-button.small,
 .secondary-button.small,
 .danger-button.small {
-    padding: 8px 11px;
+    min-height: 38px;
+
+    padding:
+        7px
+        11px;
 
     font-size: 12px;
 }
 
 
-.secondary-button {
-    border: 1px solid #d1d5db;
-
-    background-color: white;
-
-    color: #111827;
-
-    padding: 11px 14px;
-
-    border-radius: 10px;
-}
-
-
-.danger-button {
-    border: 1px solid #fecaca;
-
-    background-color: #fff;
-
-    color: #b91c1c;
-
-    padding: 11px 14px;
-
-    border-radius: 10px;
-}
-
-
-.back-button {
-    border: 1px solid #e5e7eb;
-
-    background-color: white;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-
-    margin-bottom: 8px;
+button:active {
+    transform: scale(0.98);
 }
 
 
@@ -244,22 +416,57 @@ h3 {
 .quick-actions {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
     gap: 10px;
 }
 
 
 .action-card {
-    background-color: white;
+    min-height: 64px;
 
-    padding: 18px 10px;
+    background-color:
+        var(--surface);
 
-    border: 1px solid #e5e7eb;
+    padding:
+        15px
+        12px;
 
-    border-radius: 14px;
+    border:
+        1px solid var(--border);
 
-    font-weight: bold;
+    border-radius:
+        var(--radius-medium);
+
+    color:
+        var(--text);
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    box-shadow:
+        var(--shadow-small);
+
+    transition:
+        background-color 0.12s ease,
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+.action-card:hover {
+    background-color:
+        var(--surface-soft);
+
+    box-shadow:
+        var(--shadow-medium);
+}
+
+
+.action-card:active {
+    transform: scale(0.985);
 }
 
 
@@ -269,64 +476,117 @@ h3 {
 ========================= */
 
 .search-box {
-    margin-bottom: 12px;
+    margin-bottom: 13px;
 }
 
 
 .search-box input {
     width: 100%;
 
-    padding: 13px 14px;
+    min-height: 48px;
 
-    border: 1px solid #d1d5db;
+    padding:
+        11px
+        14px;
 
-    border-radius: 12px;
+    border:
+        1px solid var(--border-strong);
 
-    background-color: white;
+    border-radius:
+        13px;
+
+    background-color:
+        var(--surface);
 
     font-size: 16px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.search-box input:focus {
+    border-color:
+        #9ca3af;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.06);
+
+    outline: none;
 }
 
 
 
 /* =========================
-   EMPTY
+   EMPTY STATES
 ========================= */
 
 .empty-box {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    padding: 26px 15px;
+    padding:
+        24px
+        16px;
 
-    border-radius: 14px;
+    border-radius:
+        var(--radius-medium);
 
-    border: 1px dashed #d1d5db;
+    border:
+        1px dashed var(--border-strong);
 
     text-align: center;
 
-    color: #6b7280;
+    color:
+        var(--text-soft);
 
     font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+.empty-box p {
+    margin:
+        0
+        0
+        12px;
 }
 
 
 
 /* =========================
-   CLIENT / PROGRAM CARDS
+   CLIENT / PROGRAM /
+   LIBRARY CARDS
 ========================= */
 
 .client-card,
 .program-card,
 .library-exercise-card {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    padding: 16px;
+    padding:
+        16px;
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius:
+        var(--radius-medium);
 
-    margin-bottom: 10px;
+    margin-bottom:
+        10px;
+
+    box-shadow:
+        var(--shadow-small);
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        border-color 0.12s ease;
 }
 
 
@@ -336,21 +596,45 @@ h3 {
 }
 
 
+.client-card:hover,
+.program-card:hover {
+    border-color:
+        #d1d5db;
+
+    box-shadow:
+        var(--shadow-medium);
+}
+
+
+.client-card:active,
+.program-card:active {
+    transform: scale(0.992);
+}
+
+
 .client-card h3,
 .program-card h3,
 .library-exercise-card h3 {
-    margin: 0 0 7px;
+    margin:
+        0
+        0
+        7px;
 
     font-size: 16px;
+
+    font-weight: 800;
 }
 
 
 .client-card p,
 .program-card p,
 .library-exercise-card p {
-    margin: 5px 0;
+    margin:
+        5px
+        0;
 
-    color: #6b7280;
+    color:
+        var(--text-soft);
 
     font-size: 13px;
 
@@ -364,12 +648,15 @@ h3 {
 ========================= */
 
 .profile-title-row,
-.program-title-row {
+.program-title-row,
+.program-main-row {
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
     gap: 12px;
 
@@ -382,7 +669,9 @@ h3 {
 }
 
 
-.inline-actions {
+.inline-actions,
+.program-actions,
+.session-actions {
     display: flex;
 
     gap: 7px;
@@ -392,31 +681,50 @@ h3 {
 
 
 .profile-card {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius:
+        var(--radius-medium);
 
-    padding: 16px;
+    padding:
+        16px;
+
+    box-shadow:
+        var(--shadow-small);
 }
 
 
 .profile-card p {
-    margin: 10px 0;
+    margin:
+        9px
+        0;
+
+    font-size: 14px;
+}
+
+
+.profile-card strong {
+    font-weight: 700;
 }
 
 
 .section-header {
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
     gap: 12px;
 
-    margin-top: 25px;
+    margin-top:
+        25px;
 }
 
 
@@ -432,27 +740,49 @@ h3 {
 ========================= */
 
 .program-detail-header {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius:
+        var(--radius-large);
 
-    padding: 16px;
+    padding:
+        17px;
+
+    box-shadow:
+        var(--shadow-small);
 }
 
 
 .program-detail-header h2 {
-    margin: 0 0 8px;
+    margin:
+        0
+        0
+        8px;
 }
 
 
 .program-detail-header p {
-    margin: 6px 0;
+    margin:
+        6px
+        0;
 
-    color: #6b7280;
+    color:
+        var(--text-soft);
 
-    line-height: 1.7;
+    line-height:
+        1.8;
+
+    font-size: 13px;
+}
+
+
+.program-actions {
+    justify-content:
+        flex-end;
 }
 
 
@@ -462,91 +792,142 @@ h3 {
 ========================= */
 
 .training-day-card {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    border-radius: 16px;
+    border-radius:
+        var(--radius-large);
 
-    padding: 16px;
+    padding:
+        15px;
 
-    margin-bottom: 14px;
+    margin-bottom:
+        14px;
+
+    box-shadow:
+        var(--shadow-small);
 }
 
 
 .training-day-header {
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: center;
+    align-items:
+        center;
 
     gap: 10px;
 
-    margin-bottom: 12px;
+    margin-bottom:
+        12px;
 }
 
 
 .training-day-header h3 {
     margin: 0;
+
+    font-size: 16px;
+}
+
+
+.training-day-title-group {
+    min-width: 0;
+}
+
+
+.training-day-title-group h3 {
+    overflow-wrap:
+        anywhere;
 }
 
 
 
 /* =========================
-   PROGRAM EXERCISE
+   EXERCISE CARD
 ========================= */
 
 .exercise-card {
-    background-color: #f9fafb;
+    background-color:
+        var(--surface-soft);
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius:
+        13px;
 
-    padding: 12px;
+    padding:
+        13px;
 
-    margin-top: 8px;
+    margin-top:
+        9px;
 }
 
 
 .exercise-card h4 {
-    margin: 0 0 8px;
+    margin:
+        0
+        0
+        9px;
 
-    font-size: 15px;
+    font-size:
+        15px;
 }
 
 
 .exercise-details {
-    display: flex;
+    display:
+        flex;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    gap: 6px;
+    gap:
+        6px;
 }
 
 
 .exercise-detail {
-    background-color: white;
+    background-color:
+        var(--surface);
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid var(--border);
 
-    padding: 5px 8px;
+    padding:
+        6px
+        9px;
 
-    border-radius: 8px;
+    border-radius:
+        9px;
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    color: #4b5563;
+    color:
+        #4b5563;
 }
 
 
 .exercise-note {
-    margin: 8px 0 0;
+    margin:
+        9px
+        0
+        0;
 
-    color: #6b7280;
+    color:
+        var(--text-soft);
 
-    font-size: 13px;
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
 }
 
 
@@ -556,73 +937,108 @@ h3 {
 ========================= */
 
 .library-actions {
-    display: flex;
+    display:
+        flex;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
-    margin-bottom: 14px;
+    margin-bottom:
+        14px;
 }
 
 
 .filter-box {
-    display: grid;
+    display:
+        grid;
 
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns:
+        2fr
+        1fr;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    margin-bottom: 15px;
+    margin-bottom:
+        15px;
 }
 
 
 .filter-box input,
 .filter-box select {
-    width: 100%;
+    width:
+        100%;
 
-    padding: 12px;
+    min-height:
+        46px;
 
-    border: 1px solid #d1d5db;
+    padding:
+        10px
+        12px;
 
-    border-radius: 10px;
+    border:
+        1px solid var(--border-strong);
 
-    background-color: white;
+    border-radius:
+        var(--radius-small);
 
-    font-size: 15px;
+    background-color:
+        var(--surface);
+
+    font-size:
+        16px;
 }
 
 
 .category-badge {
-    display: inline-block;
+    display:
+        inline-block;
 
-    padding: 5px 9px;
+    padding:
+        5px
+        9px;
 
-    background-color: #f3f4f6;
+    background-color:
+        #eef2f7;
 
-    border-radius: 20px;
+    border-radius:
+        999px;
 
-    color: #4b5563;
+    color:
+        #4b5563;
 
-    font-size: 11px;
+    font-size:
+        11px;
 }
 
 
 .library-card-header {
-    display: flex;
+    display:
+        flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
-    align-items: flex-start;
+    align-items:
+        flex-start;
 
-    gap: 10px;
+    gap:
+        12px;
 }
 
 
 .library-card-actions {
-    display: flex;
+    display:
+        flex;
 
-    gap: 5px;
+    gap:
+        6px;
+
+    flex-wrap:
+        wrap;
 }
 
 
@@ -632,138 +1048,255 @@ h3 {
 ========================= */
 
 .modal {
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    background-color: rgba(0, 0, 0, 0.45);
+    z-index:
+        100;
 
-    display: none;
+    display:
+        none;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    align-items: center;
+    align-items:
+        center;
 
-    padding: 20px;
+    padding:
+        18px;
 
-    z-index: 100;
+    background-color:
+        rgba(0, 0, 0, 0.48);
 
-    overflow-y: auto;
+    overflow-y:
+        auto;
+
+    overscroll-behavior:
+        contain;
 }
 
 
 .modal.show {
-    display: flex;
+    display:
+        flex;
 }
 
 
 .modal-box {
-    width: 100%;
+    width:
+        100%;
 
-    max-width: 500px;
+    max-width:
+        500px;
 
-    background-color: white;
+    max-height:
+        calc(
+            100vh -
+            36px
+        );
 
-    border-radius: 18px;
+    overflow-y:
+        auto;
 
-    padding: 20px;
+    background-color:
+        var(--surface);
 
-    max-height: 90vh;
+    border-radius:
+        20px;
 
-    overflow-y: auto;
+    padding:
+        20px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.18);
+
+    -webkit-overflow-scrolling:
+        touch;
 }
 
 
 .modal-box h2 {
-    margin-top: 0;
+    margin:
+        0
+        0
+        6px;
+
+    font-size:
+        19px;
 }
 
 
 .modal-box label {
-    display: block;
+    display:
+        block;
 
-    margin-top: 14px;
+    margin-top:
+        14px;
 
-    margin-bottom: 6px;
+    margin-bottom:
+        6px;
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    color: #4b5563;
+    font-weight:
+        600;
+
+    color:
+        #4b5563;
 }
 
 
 .modal-box input,
 .modal-box textarea,
 .modal-box select {
-    width: 100%;
+    width:
+        100%;
 
-    padding: 12px;
+    min-height:
+        46px;
 
-    border: 1px solid #d1d5db;
+    padding:
+        11px
+        12px;
 
-    border-radius: 10px;
+    border:
+        1px solid var(--border-strong);
 
-    background-color: white;
+    border-radius:
+        11px;
 
-    font-size: 16px;
+    background-color:
+        var(--surface);
+
+    font-size:
+        16px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.modal-box input:focus,
+.modal-box textarea:focus,
+.modal-box select:focus {
+    border-color:
+        #9ca3af;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, 0.06);
+
+    outline:
+        none;
 }
 
 
 .modal-box textarea {
-    min-height: 90px;
+    min-height:
+        95px;
 
-    resize: vertical;
+    resize:
+        vertical;
+
+    line-height:
+        1.7;
 }
 
 
 .form-grid {
-    display: grid;
+    display:
+        grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 
-    gap: 10px;
+    gap:
+        10px;
 }
 
 
 .form-buttons {
-    display: flex;
+    display:
+        flex;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    margin-top: 20px;
+    margin-top:
+        21px;
+
+    position:
+        sticky;
+
+    bottom:
+        0;
+
+    background-color:
+        var(--surface);
+
+    padding-top:
+        8px;
 }
 
 
 .form-buttons button {
-    flex: 1;
+    flex:
+        1;
 
-    border: none;
+    min-height:
+        46px;
 
-    padding: 12px;
+    border:
+        none;
 
-    border-radius: 10px;
+    padding:
+        11px;
 
-    background-color: #111827;
+    border-radius:
+        11px;
 
-    color: white;
+    background-color:
+        var(--primary);
+
+    color:
+        white;
+
+    font-weight:
+        700;
 }
 
 
 .form-buttons .cancel-button {
-    background-color: #e5e7eb;
+    background-color:
+        #e5e7eb;
 
-    color: #111827;
+    color:
+        var(--text);
 }
 
 
 .or-divider {
-    margin: 16px 0 0;
+    margin:
+        16px
+        0
+        0;
 
-    text-align: center;
+    text-align:
+        center;
 
-    color: #9ca3af;
+    color:
+        var(--text-light);
 
-    font-size: 12px;
+    font-size:
+        12px;
 }
 
 
@@ -773,89 +1306,164 @@ h3 {
 ========================= */
 
 .program-days-section {
-    margin-top: 24px;
+    margin-top:
+        24px;
 
-    padding-top: 18px;
+    padding-top:
+        18px;
 
-    border-top: 1px solid #e5e7eb;
+    border-top:
+        1px solid var(--border);
 }
 
 
 .day-row {
-    display: flex;
+    display:
+        flex;
 
-    gap: 8px;
+    gap:
+        8px;
 
-    margin-top: 10px;
+    margin-top:
+        10px;
 }
 
 
 .day-row input {
-    flex: 1;
+    flex:
+        1;
+
+    min-width:
+        0;
 }
 
 
 .remove-day-button {
-    border: none;
+    min-width:
+        64px;
 
-    background-color: #fee2e2;
+    min-height:
+        44px;
 
-    color: #b91c1c;
+    border:
+        1px solid var(--danger-border);
 
-    border-radius: 10px;
+    background-color:
+        var(--danger-bg);
 
-    padding: 0 12px;
+    color:
+        var(--danger);
+
+    border-radius:
+        var(--radius-small);
+
+    padding:
+        0
+        12px;
+
+    font-weight:
+        700;
 }
 
 
 
 /* =========================
-   NAV
+   BOTTOM NAV
 ========================= */
 
 .bottom-nav {
-    position: fixed;
+    position:
+        fixed;
 
-    bottom: 0;
+    bottom:
+        0;
 
-    left: 0;
+    left:
+        0;
 
-    right: 0;
+    right:
+        0;
 
-    display: grid;
+    z-index:
+        50;
 
-    grid-template-columns: repeat(4, 1fr);
+    display:
+        grid;
 
-    background-color: white;
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    border-top: 1px solid #e5e7eb;
+    min-height:
+        var(--nav-height);
 
-    z-index: 50;
+    padding-bottom:
+        env(safe-area-inset-bottom);
+
+    background-color:
+        rgba(255, 255, 255, 0.97);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    border-top:
+        1px solid var(--border);
+
+    box-shadow:
+        0 -4px 18px
+        rgba(0, 0, 0, 0.05);
 }
 
 
 .nav-button {
-    padding: 16px 5px;
+    min-height:
+        var(--nav-height);
 
-    border: none;
+    padding:
+        10px
+        5px;
 
-    background: none;
+    border:
+        none;
 
-    color: #6b7280;
+    background:
+        none;
+
+    color:
+        var(--text-soft);
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    transition:
+        color 0.12s ease,
+        background-color 0.12s ease;
 }
 
 
 .nav-button.active {
-    color: #111827;
+    color:
+        var(--text);
 
-    font-weight: bold;
+    font-weight:
+        800;
+
+    background-color:
+        #f8fafc;
 }
 
 
 .nav-button:disabled {
-    opacity: 0.45;
+    opacity:
+        0.4;
 
-    cursor: default;
+    cursor:
+        default;
 }
 
 
@@ -865,7 +1473,44 @@ h3 {
 ========================= */
 
 .print-area {
-    display: none;
+    display:
+        none;
+}
+
+
+
+/* =========================
+   TABLET / SMALL DESKTOP
+========================= */
+
+@media (min-width: 700px) {
+
+    .content {
+        padding:
+            22px;
+    }
+
+
+    .topbar {
+        padding:
+            20px
+            22px;
+    }
+
+
+    .client-card,
+    .program-card,
+    .library-exercise-card {
+        padding:
+            18px;
+    }
+
+
+    .training-day-card {
+        padding:
+            18px;
+    }
+
 }
 
 
@@ -876,29 +1521,324 @@ h3 {
 
 @media (max-width: 600px) {
 
+    .content {
+        padding:
+            13px;
+    }
+
+
+    .topbar {
+        padding:
+            15px
+            14px;
+    }
+
+
+    .topbar h1 {
+        font-size:
+            21px;
+    }
+
+
+    .topbar p {
+        font-size:
+            12px;
+    }
+
+
+    h2 {
+        margin-top:
+            22px;
+
+        font-size:
+            17px;
+    }
+
+
+    .stats {
+        gap:
+            8px;
+    }
+
+
+    .stat-card {
+        padding:
+            14px
+            5px;
+    }
+
+
+    .stat-number {
+        font-size:
+            23px;
+    }
+
+
+    .stat-label {
+        font-size:
+            11px;
+    }
+
+
     .quick-actions {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .action-card {
+        min-height:
+            58px;
+
+        text-align:
+            right;
+
+        padding:
+            14px
+            16px;
     }
 
 
     .filter-box {
-        grid-template-columns: 1fr;
-    }
-
-
-    .training-day-header {
-        align-items: flex-start;
-    }
-
-
-    .section-header {
-        align-items: flex-start;
+        grid-template-columns:
+            1fr;
     }
 
 
     .profile-title-row,
-    .program-title-row {
-        align-items: flex-start;
+    .program-title-row,
+    .program-main-row,
+    .training-day-header,
+    .library-card-header,
+    .section-header {
+        align-items:
+            stretch;
+    }
+
+
+    .program-main-row {
+        flex-direction:
+            column;
+    }
+
+
+    .program-actions {
+        width:
+            100%;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            8px;
+    }
+
+
+    .program-actions button {
+        width:
+            100%;
+    }
+
+
+    .training-day-header {
+        flex-direction:
+            column;
+    }
+
+
+    .training-day-header .session-actions {
+        width:
+            100%;
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap:
+            6px;
+    }
+
+
+    .session-actions button {
+        width:
+            100%;
+
+        padding-left:
+            6px;
+
+        padding-right:
+            6px;
+    }
+
+
+    .library-card-header {
+        flex-direction:
+            column;
+    }
+
+
+    .library-card-actions {
+        width:
+            100%;
+    }
+
+
+    .library-card-actions button {
+        flex:
+            1;
+    }
+
+
+    .profile-title-row {
+        flex-direction:
+            column;
+    }
+
+
+    .inline-actions {
+        width:
+            100%;
+    }
+
+
+    .inline-actions button {
+        flex:
+            1;
+    }
+
+
+    .section-header {
+        flex-direction:
+            column;
+    }
+
+
+    .section-header button {
+        width:
+            100%;
+    }
+
+
+    .form-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .form-buttons {
+        flex-direction:
+            column;
+    }
+
+
+    .form-buttons button {
+        width:
+            100%;
+    }
+
+
+    .modal {
+        align-items:
+            flex-end;
+
+        padding:
+            10px;
+    }
+
+
+    .modal-box {
+        max-height:
+            92vh;
+
+        border-radius:
+            20px
+            20px
+            12px
+            12px;
+
+        padding:
+            17px;
+    }
+
+
+    .day-row {
+        align-items:
+            stretch;
+    }
+
+
+    .remove-day-button {
+        min-width:
+            58px;
+    }
+
+
+    .exercise-detail {
+        padding:
+            6px
+            8px;
+    }
+
+}
+
+
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .content {
+        padding:
+            10px;
+    }
+
+
+    .program-actions {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .training-day-header .session-actions {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .stats {
+        gap:
+            6px;
+    }
+
+
+    .stat-number {
+        font-size:
+            21px;
+    }
+
+}
+
+
+
+/* =========================
+   DESKTOP HOVER
+========================= */
+
+@media (hover: hover) {
+
+    .client-card:hover,
+    .program-card:hover,
+    .library-exercise-card:hover,
+    .action-card:hover {
+        transform:
+            translateY(-1px);
     }
 
 }
@@ -912,149 +1852,208 @@ h3 {
 @media print {
 
     @page {
-        size: A4;
-        margin: 12mm;
+        size:
+            A4;
+
+        margin:
+            12mm;
     }
 
 
     body {
-        background-color: white;
+        background-color:
+            white;
 
-        color: black;
+        color:
+            black;
 
-        direction: rtl;
+        direction:
+            rtl;
     }
 
 
     .app,
     .modal {
-        display: none !important;
+        display:
+            none !important;
     }
 
 
     .print-area {
-        display: block !important;
+        display:
+            block !important;
 
-        font-family: Tahoma, Arial, sans-serif;
+        font-family:
+            Tahoma,
+            Arial,
+            sans-serif;
 
-        font-size: 12px;
+        font-size:
+            12px;
 
-        line-height: 1.6;
+        line-height:
+            1.6;
 
-        color: #000;
+        color:
+            #000;
     }
 
 
     .print-header {
-        border: 2px solid #000;
+        border:
+            2px solid #000;
 
-        padding: 12px;
+        padding:
+            12px;
 
-        margin-bottom: 14px;
+        margin-bottom:
+            14px;
     }
 
 
     .print-header h1 {
-        margin: 0 0 12px;
+        margin:
+            0
+            0
+            12px;
 
-        text-align: center;
+        text-align:
+            center;
 
-        font-size: 22px;
+        font-size:
+            22px;
     }
 
 
     .print-info-grid {
-        display: grid;
+        display:
+            grid;
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr
+            1fr;
 
-        gap: 8px 20px;
+        gap:
+            8px
+            20px;
     }
 
 
     .print-general-notes {
-        margin-top: 12px;
+        margin-top:
+            12px;
 
-        padding-top: 10px;
+        padding-top:
+            10px;
 
-        border-top: 1px solid #999;
+        border-top:
+            1px solid #999;
     }
 
 
     .print-day {
-        page-break-inside: avoid;
+        page-break-inside:
+            avoid;
 
-        margin-bottom: 16px;
+        break-inside:
+            avoid;
+
+        margin-bottom:
+            16px;
     }
 
 
     .print-day-title {
-        background-color: #eee;
+        background-color:
+            #eee;
 
-        border: 1px solid #000;
+        border:
+            1px solid #000;
 
-        padding: 7px;
+        padding:
+            7px;
 
-        font-weight: bold;
+        font-weight:
+            bold;
 
-        font-size: 14px;
+        font-size:
+            14px;
     }
 
 
     .print-table {
-        width: 100%;
+        width:
+            100%;
 
-        border-collapse: collapse;
+        border-collapse:
+            collapse;
 
-        table-layout: fixed;
+        table-layout:
+            fixed;
     }
 
 
     .print-table th,
     .print-table td {
-        border: 1px solid #000;
+        border:
+            1px solid #000;
 
-        padding: 6px;
+        padding:
+            6px;
 
-        text-align: center;
+        text-align:
+            center;
 
-        vertical-align: middle;
+        vertical-align:
+            middle;
 
-        word-wrap: break-word;
+        word-wrap:
+            break-word;
     }
 
 
     .print-table th {
-        background-color: #f4f4f4;
+        background-color:
+            #f4f4f4;
 
-        font-weight: bold;
+        font-weight:
+            bold;
     }
 
 
     .print-table .print-exercise-name {
-        text-align: right;
+        text-align:
+            right;
 
-        width: 24%;
+        width:
+            24%;
     }
 
 
     .print-table .print-notes-column {
-        width: 26%;
+        width:
+            26%;
     }
 
 
     .print-footer {
-        margin-top: 20px;
+        margin-top:
+            20px;
 
-        border-top: 1px solid #aaa;
+        border-top:
+            1px solid #aaa;
 
-        padding-top: 8px;
+        padding-top:
+            8px;
 
-        text-align: center;
+        text-align:
+            center;
 
-        font-size: 10px;
+        font-size:
+            10px;
 
-        color: #555;
+        color:
+            #555;
     }
 
 }
