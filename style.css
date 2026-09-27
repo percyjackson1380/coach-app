@@ -188,8 +188,10 @@ h3 {
 }
 
 
-.primary-button.small {
-    padding: 8px 12px;
+.primary-button.small,
+.secondary-button.small,
+.danger-button.small {
+    padding: 8px 11px;
 
     font-size: 12px;
 }
@@ -201,6 +203,19 @@ h3 {
     background-color: white;
 
     color: #111827;
+
+    padding: 11px 14px;
+
+    border-radius: 10px;
+}
+
+
+.danger-button {
+    border: 1px solid #fecaca;
+
+    background-color: #fff;
+
+    color: #b91c1c;
 
     padding: 11px 14px;
 
@@ -250,6 +265,31 @@ h3 {
 
 
 /* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    margin-bottom: 12px;
+}
+
+
+.search-box input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 12px;
+
+    background-color: white;
+
+    font-size: 16px;
+}
+
+
+
+/* =========================
    EMPTY
 ========================= */
 
@@ -272,7 +312,7 @@ h3 {
 
 
 /* =========================
-   CLIENT
+   CLIENT / PROGRAM CARDS
 ========================= */
 
 .client-card,
@@ -322,6 +362,34 @@ h3 {
 /* =========================
    PROFILE
 ========================= */
+
+.profile-title-row,
+.program-title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.profile-title-row h2 {
+    margin-top: 16px;
+}
+
+
+.inline-actions {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
 
 .profile-card {
     background-color: white;
@@ -426,7 +494,7 @@ h3 {
 
 
 /* =========================
-   EXERCISE CARD
+   PROGRAM EXERCISE
 ========================= */
 
 .exercise-card {
@@ -537,6 +605,24 @@ h3 {
     color: #4b5563;
 
     font-size: 11px;
+}
+
+
+.library-card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 10px;
+}
+
+
+.library-card-actions {
+    display: flex;
+
+    gap: 5px;
 }
 
 
@@ -775,6 +861,16 @@ h3 {
 
 
 /* =========================
+   PRINT AREA
+========================= */
+
+.print-area {
+    display: none;
+}
+
+
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -797,6 +893,168 @@ h3 {
 
     .section-header {
         align-items: flex-start;
+    }
+
+
+    .profile-title-row,
+    .program-title-row {
+        align-items: flex-start;
+    }
+
+}
+
+
+
+/* =========================
+   PRINT MODE
+========================= */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+
+    body {
+        background-color: white;
+
+        color: black;
+
+        direction: rtl;
+    }
+
+
+    .app,
+    .modal {
+        display: none !important;
+    }
+
+
+    .print-area {
+        display: block !important;
+
+        font-family: Tahoma, Arial, sans-serif;
+
+        font-size: 12px;
+
+        line-height: 1.6;
+
+        color: #000;
+    }
+
+
+    .print-header {
+        border: 2px solid #000;
+
+        padding: 12px;
+
+        margin-bottom: 14px;
+    }
+
+
+    .print-header h1 {
+        margin: 0 0 12px;
+
+        text-align: center;
+
+        font-size: 22px;
+    }
+
+
+    .print-info-grid {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 8px 20px;
+    }
+
+
+    .print-general-notes {
+        margin-top: 12px;
+
+        padding-top: 10px;
+
+        border-top: 1px solid #999;
+    }
+
+
+    .print-day {
+        page-break-inside: avoid;
+
+        margin-bottom: 16px;
+    }
+
+
+    .print-day-title {
+        background-color: #eee;
+
+        border: 1px solid #000;
+
+        padding: 7px;
+
+        font-weight: bold;
+
+        font-size: 14px;
+    }
+
+
+    .print-table {
+        width: 100%;
+
+        border-collapse: collapse;
+
+        table-layout: fixed;
+    }
+
+
+    .print-table th,
+    .print-table td {
+        border: 1px solid #000;
+
+        padding: 6px;
+
+        text-align: center;
+
+        vertical-align: middle;
+
+        word-wrap: break-word;
+    }
+
+
+    .print-table th {
+        background-color: #f4f4f4;
+
+        font-weight: bold;
+    }
+
+
+    .print-table .print-exercise-name {
+        text-align: right;
+
+        width: 24%;
+    }
+
+
+    .print-table .print-notes-column {
+        width: 26%;
+    }
+
+
+    .print-footer {
+        margin-top: 20px;
+
+        border-top: 1px solid #aaa;
+
+        padding-top: 8px;
+
+        text-align: center;
+
+        font-size: 10px;
+
+        color: #555;
     }
 
 }
