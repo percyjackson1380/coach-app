@@ -17,975 +17,897 @@
     >
 </head>
 
-
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- HEADER -->
+    <header class="topbar">
+        <h1>پنل مربی</h1>
+        <p>مدیریت شاگردها و برنامه‌های تمرینی</p>
+    </header>
 
-        <header class="topbar">
 
-            <div>
-                <h1>پنل مربی</h1>
+    <main class="content">
 
-                <p>
-                    مدیریت شاگردها و برنامه‌های تمرینی
-                </p>
+        <!-- DASHBOARD -->
+
+        <section class="view" id="dashboard">
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <span class="stat-number" id="clientCount">0</span>
+                    <span class="stat-label">شاگرد</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number" id="programCount">0</span>
+                    <span class="stat-label">برنامه</span>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-number" id="exerciseCount">0</span>
+                    <span class="stat-label">حرکت</span>
+                </div>
+
             </div>
 
-        </header>
 
+            <h2>دسترسی سریع</h2>
 
-
-        <main class="content">
-
-            <!-- =========================
-                 DASHBOARD
-            ========================== -->
-
-            <section
-                class="view"
-                id="dashboard"
-            >
-
-                <div class="stats">
-
-                    <div class="stat-card">
-
-                        <span
-                            class="stat-number"
-                            id="clientCount"
-                        >
-                            0
-                        </span>
-
-                        <span class="stat-label">
-                            شاگرد
-                        </span>
-
-                    </div>
-
-
-                    <div class="stat-card">
-
-                        <span
-                            class="stat-number"
-                            id="programCount"
-                        >
-                            0
-                        </span>
-
-                        <span class="stat-label">
-                            برنامه
-                        </span>
-
-                    </div>
-
-
-                    <div class="stat-card">
-
-                        <span
-                            class="stat-number"
-                            id="exerciseCount"
-                        >
-                            0
-                        </span>
-
-                        <span class="stat-label">
-                            حرکت
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <h2>دسترسی سریع</h2>
-
-
-                <div class="quick-actions">
-
-                    <button
-                        class="action-card"
-                        id="addClientButton"
-                    >
-                        + افزودن شاگرد
-                    </button>
-
-
-                    <button
-                        class="action-card"
-                        id="dashboardAddExerciseButton"
-                    >
-                        + افزودن حرکت
-                    </button>
-
-                </div>
-
-
-
-                <div class="section-header">
-
-                    <h2>
-                        شاگردها
-                    </h2>
-
-                </div>
-
-
-                <!-- CLIENT SEARCH -->
-
-                <div class="search-box">
-
-                    <input
-                        type="text"
-                        id="clientSearch"
-                        placeholder="جستجوی نام، شماره تماس یا هدف..."
-                    >
-
-                </div>
-
-
-                <div id="clientList"></div>
-
-            </section>
-
-
-
-            <!-- =========================
-                 CLIENT PROFILE
-            ========================== -->
-
-            <section
-                class="view"
-                id="clientProfile"
-            >
+            <div class="quick-actions">
 
                 <button
-                    id="backButton"
-                    class="back-button"
+                    class="action-card"
+                    id="addClientButton"
                 >
-                    → برگشت
+                    + افزودن شاگرد
                 </button>
-
-
-
-                <div class="profile-title-row">
-
-                    <h2 id="profileName">
-                        نام شاگرد
-                    </h2>
-
-
-                    <div class="inline-actions">
-
-                        <button
-                            id="editClientButton"
-                            class="secondary-button small"
-                        >
-                            ویرایش
-                        </button>
-
-
-                        <button
-                            id="deleteClientButton"
-                            class="danger-button small"
-                        >
-                            حذف
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="profile-card">
-
-                    <p>
-                        <strong>
-                            شماره تماس:
-                        </strong>
-
-                        <span id="profilePhone">
-                            -
-                        </span>
-                    </p>
-
-
-                    <p>
-                        <strong>
-                            سن:
-                        </strong>
-
-                        <span id="profileAge">
-                            -
-                        </span>
-                    </p>
-
-
-                    <p>
-                        <strong>
-                            وزن:
-                        </strong>
-
-                        <span id="profileWeight">
-                            -
-                        </span>
-                    </p>
-
-
-                    <p>
-                        <strong>
-                            هدف:
-                        </strong>
-
-                        <span id="profileGoal">
-                            -
-                        </span>
-                    </p>
-
-                </div>
-
-
-
-                <div class="section-header">
-
-                    <h2>
-                        برنامه‌های تمرینی
-                    </h2>
-
-
-                    <button
-                        id="addProgramButton"
-                        class="primary-button"
-                    >
-                        + برنامه جدید
-                    </button>
-
-                </div>
-
-
-                <div id="programList"></div>
-
-            </section>
-
-
-
-            <!-- =========================
-                 PROGRAM DETAIL
-            ========================== -->
-
-            <section
-                class="view"
-                id="programDetail"
-            >
 
                 <button
-                    id="backToProfileButton"
-                    class="back-button"
+                    class="action-card"
+                    id="dashboardAddExerciseButton"
                 >
-                    → برگشت به شاگرد
+                    + افزودن حرکت
                 </button>
 
+            </div>
 
 
-                <div class="program-detail-header">
+            <h2>شاگردها</h2>
 
-                    <div class="program-title-row">
+            <div class="search-box">
+                <input
+                    id="clientSearch"
+                    type="text"
+                    placeholder="جستجوی نام، شماره تماس یا هدف..."
+                >
+            </div>
 
-                        <div>
+            <div id="clientList"></div>
 
-                            <h2 id="programDetailTitle">
-                                برنامه
-                            </h2>
-
-                            <p id="programDetailGoal"></p>
-
-                        </div>
-
-
-                        <button
-                            id="printProgramButton"
-                            class="primary-button"
-                        >
-                            چاپ برنامه
-                        </button>
-
-                    </div>
-
-
-                    <p id="programDetailNotes"></p>
-
-                </div>
+        </section>
 
 
 
-                <h2>
-                    جلسه‌های تمرینی
+        <!-- CLIENT PROFILE -->
+
+        <section class="view" id="clientProfile">
+
+            <button
+                class="back-button"
+                id="backButton"
+            >
+                → برگشت
+            </button>
+
+
+            <div class="profile-title-row">
+
+                <h2 id="profileName">
+                    نام شاگرد
                 </h2>
 
 
-                <div id="programDaysList"></div>
-
-            </section>
-
-
-
-            <!-- =========================
-                 EXERCISE LIBRARY
-            ========================== -->
-
-            <section
-                class="view"
-                id="exerciseLibraryView"
-            >
-
-                <div>
-
-                    <h2 class="no-top-margin">
-                        کتابخانه حرکات
-                    </h2>
-
-                    <p class="section-description">
-                        حرکات پرکاربرد را ذخیره کنید و در برنامه‌ها دوباره استفاده کنید.
-                    </p>
-
-                </div>
-
-
-
-                <div class="library-actions">
+                <div class="inline-actions">
 
                     <button
-                        class="primary-button"
-                        id="addLibraryExerciseButton"
+                        class="secondary-button small"
+                        id="editClientButton"
                     >
-                        + حرکت جدید
+                        ویرایش
                     </button>
 
-
                     <button
-                        class="secondary-button"
-                        id="addCategoryButton"
+                        class="danger-button small"
+                        id="deleteClientButton"
                     >
-                        + دسته‌بندی جدید
+                        حذف
                     </button>
 
                 </div>
 
+            </div>
 
 
-                <div class="filter-box">
+            <div class="profile-card">
 
-                    <input
-                        type="text"
-                        id="exerciseSearch"
-                        placeholder="جستجوی حرکت..."
-                    >
+                <p>
+                    <strong>شماره تماس:</strong>
+                    <span id="profilePhone">-</span>
+                </p>
 
+                <p>
+                    <strong>سن:</strong>
+                    <span id="profileAge">-</span>
+                </p>
 
-                    <select id="categoryFilter">
+                <p>
+                    <strong>وزن:</strong>
+                    <span id="profileWeight">-</span>
+                </p>
 
-                        <option value="">
-                            همه دسته‌بندی‌ها
-                        </option>
+                <p>
+                    <strong>هدف:</strong>
+                    <span id="profileGoal">-</span>
+                </p>
 
-                    </select>
-
-                </div>
-
-
-                <div id="exerciseLibraryList"></div>
-
-            </section>
-
-        </main>
+            </div>
 
 
+            <div class="section-header">
 
-        <!-- BOTTOM NAV -->
+                <h2>برنامه‌های تمرینی</h2>
 
-        <nav class="bottom-nav">
+                <button
+                    class="primary-button"
+                    id="addProgramButton"
+                >
+                    + برنامه جدید
+                </button>
+
+            </div>
+
+
+            <div id="programList"></div>
+
+        </section>
+
+
+
+        <!-- PROGRAM DETAIL -->
+
+        <section class="view" id="programDetail">
 
             <button
-                class="nav-button active"
-                id="homeButton"
+                class="back-button"
+                id="backToProfileButton"
             >
-                خانه
+                → برگشت به شاگرد
             </button>
 
 
-            <button
-                class="nav-button"
-                id="clientsButton"
-            >
-                شاگردها
+            <div class="program-detail-header">
+
+                <div class="program-main-row">
+
+                    <div>
+
+                        <h2 id="programDetailTitle">
+                            برنامه
+                        </h2>
+
+                        <p id="programDetailGoal"></p>
+
+                    </div>
+
+
+                    <div class="program-actions">
+
+                        <button
+                            class="secondary-button small"
+                            id="editProgramButton"
+                        >
+                            ویرایش برنامه
+                        </button>
+
+                        <button
+                            class="primary-button small"
+                            id="addSessionButton"
+                        >
+                            + افزودن جلسه
+                        </button>
+
+                        <button
+                            class="secondary-button small"
+                            id="printProgramButton"
+                        >
+                            چاپ برنامه
+                        </button>
+                        <button
+                            class="danger-button small"
+                            id="deleteProgramButton"
+                        >
+                            حذف برنامه
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <p id="programDetailNotes"></p>
+
+            </div>
+
+
+            <h2>جلسه‌های تمرینی</h2>
+
+            <div id="programDaysList"></div>
+
+        </section>
+
+
+
+        <!-- EXERCISE LIBRARY -->
+
+        <section class="view" id="exerciseLibraryView">
+
+            <h2 class="no-top-margin">
+                کتابخانه حرکات
+            </h2>
+
+            <p class="section-description">
+                حرکات پرکاربرد را ذخیره کنید و در برنامه‌ها دوباره استفاده کنید.
+            </p>
+
+
+            <div class="library-actions">
+
+                <button
+                    class="primary-button"
+                    id="addLibraryExerciseButton"
+                >
+                    + حرکت جدید
+                </button>
+
+                <button
+                    class="secondary-button"
+                    id="addCategoryButton"
+                >
+                    + دسته‌بندی جدید
+                </button>
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <input
+                    type="text"
+                    id="exerciseSearch"
+                    placeholder="جستجوی حرکت..."
+                >
+
+                <select id="categoryFilter">
+
+                    <option value="">
+                        همه دسته‌بندی‌ها
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div id="exerciseLibraryList"></div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- BOTTOM NAV -->
+
+    <nav class="bottom-nav">
+
+        <button
+            class="nav-button active"
+            id="homeButton"
+        >
+            خانه
+        </button>
+
+        <button
+            class="nav-button"
+            id="clientsButton"
+        >
+            شاگردها
+        </button>
+
+        <button
+            class="nav-button"
+            id="exercisesButton"
+        >
+            حرکات
+        </button>
+
+        <button
+            class="nav-button"
+            disabled
+        >
+            تنظیمات
+        </button>
+
+    </nav>
+
+</div>
+
+
+
+<!-- CLIENT MODAL -->
+
+<div class="modal" id="clientModal">
+
+    <div class="modal-box">
+
+        <h2 id="clientModalTitle">
+            افزودن شاگرد
+        </h2>
+
+        <label for="clientName">
+            نام و نام خانوادگی
+        </label>
+
+        <input
+            type="text"
+            id="clientName"
+        >
+
+
+        <label for="clientPhone">
+            شماره تماس
+        </label>
+
+        <input
+            type="text"
+            id="clientPhone"
+        >
+
+
+        <div class="form-grid">
+
+            <div>
+
+                <label for="clientAge">
+                    سن
+                </label>
+
+                <input
+                    type="number"
+                    id="clientAge"
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="clientWeight">
+                    وزن
+                </label>
+
+                <input
+                    type="text"
+                    id="clientWeight"
+                    placeholder="82 kg"
+                >
+
+            </div>
+
+        </div>
+
+
+        <label for="clientGoal">
+            هدف
+        </label>
+
+        <input
+            type="text"
+            id="clientGoal"
+            placeholder="مثلاً افزایش حجم"
+        >
+
+
+        <div class="form-buttons">
+
+            <button id="saveClientButton">
+                ذخیره
             </button>
 
-
             <button
-                class="nav-button"
-                id="exercisesButton"
+                class="cancel-button"
+                id="cancelClientButton"
             >
-                حرکات
+                لغو
             </button>
 
+        </div>
 
-            <button
-                class="nav-button"
-                disabled
-            >
-                تنظیمات
+    </div>
+
+</div>
+<!-- CREATE PROGRAM MODAL -->
+
+<div class="modal" id="programModal">
+
+    <div class="modal-box">
+
+        <h2>برنامه جدید</h2>
+
+        <label for="programTitle">
+            عنوان برنامه
+        </label>
+
+        <input
+            type="text"
+            id="programTitle"
+            placeholder="مثلاً برنامه مهر"
+        >
+
+
+        <label for="programGoal">
+            هدف برنامه
+        </label>
+
+        <input
+            type="text"
+            id="programGoal"
+            placeholder="مثلاً افزایش حجم"
+        >
+
+
+        <label for="programNotes">
+            توضیحات
+        </label>
+
+        <textarea
+            id="programNotes"
+            placeholder="توضیحات کلی برنامه..."
+        ></textarea>
+
+
+        <div class="program-days-section">
+
+            <div class="section-header">
+
+                <h3>جلسه‌های اولیه</h3>
+
+                <button
+                    class="primary-button small"
+                    id="addDayButton"
+                    type="button"
+                >
+                    + جلسه
+                </button>
+
+            </div>
+
+
+            <div id="daysContainer"></div>
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button id="saveProgramButton">
+                ذخیره برنامه
             </button>
 
-        </nav>
+            <button
+                class="cancel-button"
+                id="cancelProgramButton"
+            >
+                لغو
+            </button>
+
+        </div>
 
     </div>
 
+</div>
 
 
-    <!-- =========================
-         CLIENT MODAL
-    ========================== -->
 
-    <div
-        class="modal"
-        id="clientModal"
-    >
+<!-- EDIT PROGRAM MODAL -->
 
-        <div class="modal-box">
+<div class="modal" id="editProgramModal">
 
-            <h2 id="clientModalTitle">
-                افزودن شاگرد
-            </h2>
+    <div class="modal-box">
+
+        <h2>
+            ویرایش برنامه
+        </h2>
 
 
-            <label for="clientName">
-                نام و نام خانوادگی
-            </label>
+        <label for="editProgramTitle">
+            عنوان برنامه
+        </label>
 
-            <input
-                type="text"
-                id="clientName"
+        <input
+            type="text"
+            id="editProgramTitle"
+        >
+
+
+        <label for="editProgramGoal">
+            هدف برنامه
+        </label>
+
+        <input
+            type="text"
+            id="editProgramGoal"
+        >
+
+
+        <label for="editProgramNotes">
+            توضیحات
+        </label>
+
+        <textarea
+            id="editProgramNotes"
+        ></textarea>
+
+
+        <div class="form-buttons">
+
+            <button id="saveProgramEditButton">
+                ذخیره تغییرات
+            </button>
+
+            <button
+                class="cancel-button"
+                id="cancelProgramEditButton"
             >
+                لغو
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 
-            <label for="clientPhone">
-                شماره تماس
-            </label>
 
-            <input
-                type="text"
-                id="clientPhone"
+<!-- SESSION MODAL -->
+
+<div class="modal" id="sessionModal">
+
+    <div class="modal-box">
+
+        <h2 id="sessionModalTitle">
+            جلسه جدید
+        </h2>
+
+
+        <label for="sessionTitleInput">
+            نام جلسه
+        </label>
+
+        <input
+            type="text"
+            id="sessionTitleInput"
+            placeholder="مثلاً جلسه 1 - سینه"
+        >
+
+
+        <div class="form-buttons">
+
+            <button id="saveSessionButton">
+                ذخیره
+            </button>
+
+            <button
+                class="cancel-button"
+                id="cancelSessionButton"
             >
+                لغو
+            </button>
 
+        </div>
 
-            <div class="form-grid">
+    </div>
 
-                <div>
-
-                    <label for="clientAge">
-                        سن
-                    </label>
-
-                    <input
-                        type="number"
-                        id="clientAge"
-                    >
-
-                </div>
-
-
-                <div>
-
-                    <label for="clientWeight">
-                        وزن
-                    </label>
-
-                    <input
-                        type="text"
-                        id="clientWeight"
-                        placeholder="82 kg"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <label for="clientGoal">
-                هدف
-            </label>
-
-            <input
-                type="text"
-                id="clientGoal"
-                placeholder="مثلاً افزایش حجم"
-            >
+</div>
 
 
 
-            <div class="form-buttons">
+<!-- ADD EXERCISE -->
 
-                <button id="saveClientButton">
-                    ذخیره
-                </button>
+<div class="modal" id="exerciseModal">
+
+    <div class="modal-box">
+
+        <h2>
+            افزودن حرکت به جلسه
+        </h2>
 
 
-                <button
-                    id="cancelClientButton"
-                    class="cancel-button"
+        <label for="libraryExerciseSelect">
+            انتخاب از کتابخانه
+        </label>
+
+        <select id="libraryExerciseSelect">
+
+            <option value="">
+                -- انتخاب از کتابخانه --
+            </option>
+
+        </select>
+
+
+        <div class="or-divider">
+            یا
+        </div>
+
+
+        <label for="exerciseName">
+            نام حرکت
+        </label>
+
+        <input
+            type="text"
+            id="exerciseName"
+            placeholder="مثلاً Bench Press"
+        >
+
+
+        <div class="form-grid">
+
+            <div>
+
+                <label for="exerciseSets">
+                    ست
+                </label>
+
+                <input
+                    type="text"
+                    id="exerciseSets"
+                    placeholder="4"
                 >
-                    لغو
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         PROGRAM MODAL
-    ========================== -->
-
-    <div
-        class="modal"
-        id="programModal"
-    >
-
-        <div class="modal-box">
-
-            <h2>
-                برنامه جدید
-            </h2>
-
-
-            <label for="programTitle">
-                عنوان برنامه
-            </label>
-
-            <input
-                type="text"
-                id="programTitle"
-                placeholder="مثلاً برنامه مهر"
-            >
-
-
-            <label for="programGoal">
-                هدف برنامه
-            </label>
-
-            <input
-                type="text"
-                id="programGoal"
-                placeholder="مثلاً افزایش حجم"
-            >
-
-
-            <label for="programNotes">
-                توضیحات
-            </label>
-
-            <textarea
-                id="programNotes"
-                placeholder="توضیحات کلی برنامه..."
-            ></textarea>
-
-
-
-            <div class="program-days-section">
-
-                <div class="section-header">
-
-                    <h3>
-                        جلسه‌های تمرینی
-                    </h3>
-
-
-                    <button
-                        type="button"
-                        id="addDayButton"
-                        class="primary-button small"
-                    >
-                        + جلسه
-                    </button>
-
-                </div>
-
-
-                <div id="daysContainer"></div>
 
             </div>
 
 
+            <div>
 
-            <div class="form-buttons">
+                <label for="exerciseReps">
+                    تکرار
+                </label>
 
-                <button id="saveProgramButton">
-                    ذخیره برنامه
-                </button>
-
-
-                <button
-                    id="cancelProgramButton"
-                    class="cancel-button"
+                <input
+                    type="text"
+                    id="exerciseReps"
+                    placeholder="8-10"
                 >
-                    لغو
-                </button>
 
             </div>
 
         </div>
 
-    </div>
 
+        <div class="form-grid">
 
+            <div>
 
-    <!-- =========================
-         ADD EXERCISE TO PROGRAM
-    ========================== -->
+                <label for="exerciseWeight">
+                    وزن
+                </label>
 
-    <div
-        class="modal"
-        id="exerciseModal"
-    >
-
-        <div class="modal-box">
-
-            <h2>
-                افزودن حرکت به جلسه
-            </h2>
-
-
-            <label for="libraryExerciseSelect">
-                انتخاب از کتابخانه
-            </label>
-
-            <select id="libraryExerciseSelect">
-
-                <option value="">
-                    -- حرکت را انتخاب کنید --
-                </option>
-
-            </select>
-
-
-            <div class="or-divider">
-                یا
-            </div>
-
-
-            <label for="exerciseName">
-                نام حرکت
-            </label>
-
-            <input
-                type="text"
-                id="exerciseName"
-                placeholder="مثلاً Bench Press"
-            >
-
-
-            <div class="form-grid">
-
-                <div>
-
-                    <label for="exerciseSets">
-                        ست
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exerciseSets"
-                        placeholder="4"
-                    >
-
-                </div>
-
-
-                <div>
-
-                    <label for="exerciseReps">
-                        تکرار
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exerciseReps"
-                        placeholder="8-10"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-                <div>
-
-                    <label for="exerciseWeight">
-                        وزن
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exerciseWeight"
-                        placeholder="70 kg"
-                    >
-
-                </div>
-
-
-                <div>
-
-                    <label for="exerciseRest">
-                        استراحت
-                    </label>
-
-                    <input
-                        type="text"
-                        id="exerciseRest"
-                        placeholder="90 ثانیه"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <label for="exerciseNotes">
-                یادداشت
-            </label>
-
-            <textarea
-                id="exerciseNotes"
-                placeholder="توضیحات حرکت..."
-            ></textarea>
-
-
-
-            <div class="form-buttons">
-
-                <button id="saveExerciseButton">
-                    ذخیره حرکت
-                </button>
-
-
-                <button
-                    id="cancelExerciseButton"
-                    class="cancel-button"
+                <input
+                    type="text"
+                    id="exerciseWeight"
+                    placeholder="70 kg"
                 >
-                    لغو
-                </button>
 
             </div>
 
-        </div>
 
-    </div>
+            <div>
 
+                <label for="exerciseRest">
+                    استراحت
+                </label>
 
-
-    <!-- =========================
-         LIBRARY EXERCISE MODAL
-    ========================== -->
-
-    <div
-        class="modal"
-        id="libraryExerciseModal"
-    >
-
-        <div class="modal-box">
-
-            <h2 id="libraryExerciseModalTitle">
-                حرکت جدید
-            </h2>
-
-
-            <label for="libraryExerciseName">
-                نام حرکت
-            </label>
-
-            <input
-                type="text"
-                id="libraryExerciseName"
-                placeholder="مثلاً Romanian Deadlift"
-            >
-
-
-            <label for="libraryExerciseCategory">
-                دسته‌بندی
-            </label>
-
-            <select id="libraryExerciseCategory"></select>
-
-
-            <label for="libraryExerciseNote">
-                یادداشت پیش‌فرض
-            </label>
-
-            <textarea
-                id="libraryExerciseNote"
-                placeholder="مثلاً کنترل حرکت، دامنه کامل..."
-            ></textarea>
-
-
-
-            <div class="form-buttons">
-
-                <button id="saveLibraryExerciseButton">
-                    ذخیره حرکت
-                </button>
-
-
-                <button
-                    id="cancelLibraryExerciseButton"
-                    class="cancel-button"
+                <input
+                    type="text"
+                    id="exerciseRest"
+                    placeholder="90 ثانیه"
                 >
-                    لغو
-                </button>
 
             </div>
 
         </div>
 
-    </div>
+
+        <label for="exerciseNotes">
+            یادداشت
+        </label>
+
+        <textarea id="exerciseNotes"></textarea>
 
 
+        <div class="form-buttons">
 
-    <!-- =========================
-         CATEGORY MODAL
-    ========================== -->
+            <button id="saveExerciseButton">
+                ذخیره حرکت
+            </button>
 
-    <div
-        class="modal"
-        id="categoryModal"
-    >
-
-        <div class="modal-box">
-
-            <h2>
-                دسته‌بندی جدید
-            </h2>
-
-
-            <label for="newCategoryName">
-                نام دسته‌بندی
-            </label>
-
-            <input
-                type="text"
-                id="newCategoryName"
-                placeholder="مثلاً اصلاحی"
+            <button
+                class="cancel-button"
+                id="cancelExerciseButton"
             >
-
-
-
-            <div class="form-buttons">
-
-                <button id="saveCategoryButton">
-                    ذخیره
-                </button>
-
-
-                <button
-                    id="cancelCategoryButton"
-                    class="cancel-button"
-                >
-                    لغو
-                </button>
-
-            </div>
+                لغو
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
 
-    <!-- =========================
-         PRINT AREA
-    ========================== -->
 
-    <section
-        id="printArea"
-        class="print-area"
-    >
+<!-- LIBRARY EXERCISE -->
 
-        <div class="print-header">
+<div class="modal" id="libraryExerciseModal">
 
-            <h1>
-                برنامه تمرینی
-            </h1>
+    <div class="modal-box">
 
+        <h2 id="libraryExerciseModalTitle">
+            حرکت جدید
+        </h2>
 
-            <div class="print-info-grid">
+        <label for="libraryExerciseName">
+            نام حرکت
+        </label>
 
-                <div>
-                    <strong>
-                        نام ورزشکار:
-                    </strong>
-
-                    <span id="printClientName"></span>
-                </div>
+        <input
+            type="text"
+            id="libraryExerciseName"
+        >
 
 
-                <div>
-                    <strong>
-                        عنوان برنامه:
-                    </strong>
+        <label for="libraryExerciseCategory">
+            دسته‌بندی
+        </label>
 
-                    <span id="printProgramTitle"></span>
-                </div>
+        <select id="libraryExerciseCategory"></select>
 
 
-                <div>
-                    <strong>
-                        هدف:
-                    </strong>
+        <label for="libraryExerciseNote">
+            یادداشت پیش‌فرض
+        </label>
 
-                    <span id="printProgramGoal"></span>
-                </div>
+        <textarea id="libraryExerciseNote"></textarea>
 
 
-                <div>
-                    <strong>
-                        تاریخ چاپ:
-                    </strong>
+        <div class="form-buttons">
 
-                    <span id="printDate"></span>
-                </div>
+            <button id="saveLibraryExerciseButton">
+                ذخیره
+            </button>
 
+            <button
+                class="cancel-button"
+                id="cancelLibraryExerciseButton"
+            >
+                لغو
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CATEGORY MODAL -->
+
+<div class="modal" id="categoryModal">
+
+    <div class="modal-box">
+
+        <h2>
+            دسته‌بندی جدید
+        </h2>
+
+        <label for="newCategoryName">
+            نام دسته‌بندی
+        </label>
+
+        <input
+            type="text"
+            id="newCategoryName"
+        >
+
+
+        <div class="form-buttons">
+
+            <button id="saveCategoryButton">
+                ذخیره
+            </button>
+
+            <button
+                class="cancel-button"
+                id="cancelCategoryButton"
+            >
+                لغو
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- PRINT AREA -->
+
+<section
+    class="print-area"
+    id="printArea"
+>
+
+    <div class="print-header">
+
+        <h1>برنامه تمرینی</h1>
+
+
+        <div class="print-info-grid">
+
+            <div>
+                <strong>نام ورزشکار:</strong>
+                <span id="printClientName"></span>
             </div>
 
+            <div>
+                <strong>عنوان برنامه:</strong>
+                <span id="printProgramTitle"></span>
+            </div>
 
-            <div
-                class="print-general-notes"
-                id="printProgramNotes"
-            ></div>
+            <div>
+                <strong>هدف:</strong>
+                <span id="printProgramGoal"></span>
+            </div>
+
+            <div>
+                <strong>تاریخ چاپ:</strong>
+                <span id="printDate"></span>
+            </div>
 
         </div>
 
 
-        <div id="printDays"></div>
+        <div
+            class="print-general-notes"
+            id="printProgramNotes"
+        ></div>
+
+    </div>
 
 
-        <div class="print-footer">
-            پنل مربی
-        </div>
+    <div id="printDays"></div>
 
-    </section>
+</section>
 
 
-
-    <script src="app.js"></script>
+<script src="app.js"></script>
 
 </body>
 

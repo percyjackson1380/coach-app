@@ -2,116 +2,102 @@
    ELEMENTS
 ========================= */
 
-const dashboard =
-    document.getElementById("dashboard");
+const dashboard = document.getElementById("dashboard");
+const clientProfile = document.getElementById("clientProfile");
+const programDetail = document.getElementById("programDetail");
+const exerciseLibraryView = document.getElementById("exerciseLibraryView");
 
-const clientProfile =
-    document.getElementById("clientProfile");
+const homeButton = document.getElementById("homeButton");
+const clientsButton = document.getElementById("clientsButton");
+const exercisesButton = document.getElementById("exercisesButton");
 
-const programDetail =
-    document.getElementById("programDetail");
+const clientCount = document.getElementById("clientCount");
+const programCount = document.getElementById("programCount");
+const exerciseCount = document.getElementById("exerciseCount");
 
-const exerciseLibraryView =
-    document.getElementById("exerciseLibraryView");
-
-
-const homeButton =
-    document.getElementById("homeButton");
-
-const clientsButton =
-    document.getElementById("clientsButton");
-
-const exercisesButton =
-    document.getElementById("exercisesButton");
+const clientList = document.getElementById("clientList");
+const clientSearch = document.getElementById("clientSearch");
 
 
-const clientCount =
-    document.getElementById("clientCount");
+/* =========================
+   CLIENT ELEMENTS
+========================= */
 
-const programCount =
-    document.getElementById("programCount");
+const addClientButton = document.getElementById("addClientButton");
 
-const exerciseCount =
-    document.getElementById("exerciseCount");
+const clientModal = document.getElementById("clientModal");
+const clientModalTitle = document.getElementById("clientModalTitle");
 
+const saveClientButton = document.getElementById("saveClientButton");
+const cancelClientButton = document.getElementById("cancelClientButton");
 
-const clientList =
-    document.getElementById("clientList");
+const editClientButton = document.getElementById("editClientButton");
+const deleteClientButton = document.getElementById("deleteClientButton");
 
-const clientSearch =
-    document.getElementById("clientSearch");
-
-
-
-/* CLIENT */
-
-const addClientButton =
-    document.getElementById("addClientButton");
-
-const clientModal =
-    document.getElementById("clientModal");
-
-const clientModalTitle =
-    document.getElementById("clientModalTitle");
-
-const saveClientButton =
-    document.getElementById("saveClientButton");
-
-const cancelClientButton =
-    document.getElementById("cancelClientButton");
-
-const editClientButton =
-    document.getElementById("editClientButton");
-
-const deleteClientButton =
-    document.getElementById("deleteClientButton");
-
-const backButton =
-    document.getElementById("backButton");
+const backButton = document.getElementById("backButton");
 
 
+/* =========================
+   PROGRAM ELEMENTS
+========================= */
 
-/* PROGRAM */
+const addProgramButton = document.getElementById("addProgramButton");
 
-const addProgramButton =
-    document.getElementById("addProgramButton");
+const programList = document.getElementById("programList");
 
-const programList =
-    document.getElementById("programList");
+const programModal = document.getElementById("programModal");
 
-const programModal =
-    document.getElementById("programModal");
+const saveProgramButton = document.getElementById("saveProgramButton");
+const cancelProgramButton = document.getElementById("cancelProgramButton");
 
-const saveProgramButton =
-    document.getElementById("saveProgramButton");
+const addDayButton = document.getElementById("addDayButton");
+const daysContainer = document.getElementById("daysContainer");
 
-const cancelProgramButton =
-    document.getElementById("cancelProgramButton");
+const backToProfileButton = document.getElementById("backToProfileButton");
 
-const addDayButton =
-    document.getElementById("addDayButton");
+const programDaysList = document.getElementById("programDaysList");
 
-const daysContainer =
-    document.getElementById("daysContainer");
-
-const backToProfileButton =
-    document.getElementById("backToProfileButton");
-
-const programDaysList =
-    document.getElementById("programDaysList");
-
-const printProgramButton =
-    document.getElementById("printProgramButton");
+const editProgramButton = document.getElementById("editProgramButton");
+const addSessionButton = document.getElementById("addSessionButton");
+const printProgramButton = document.getElementById("printProgramButton");
+const deleteProgramButton = document.getElementById("deleteProgramButton");
 
 
+/* =========================
+   EDIT PROGRAM ELEMENTS
+========================= */
 
-/* PROGRAM EXERCISE */
+const editProgramModal = document.getElementById("editProgramModal");
 
-const exerciseModal =
-    document.getElementById("exerciseModal");
+const saveProgramEditButton =
+    document.getElementById("saveProgramEditButton");
 
-const saveExerciseButton =
-    document.getElementById("saveExerciseButton");
+const cancelProgramEditButton =
+    document.getElementById("cancelProgramEditButton");
+
+
+/* =========================
+   SESSION ELEMENTS
+========================= */
+
+const sessionModal = document.getElementById("sessionModal");
+
+const sessionModalTitle = document.getElementById("sessionModalTitle");
+
+const sessionTitleInput = document.getElementById("sessionTitleInput");
+
+const saveSessionButton = document.getElementById("saveSessionButton");
+
+const cancelSessionButton = document.getElementById("cancelSessionButton");
+
+
+/* =========================
+   PROGRAM EXERCISE ELEMENTS
+========================= */
+
+const exerciseModal = document.getElementById("exerciseModal");
+
+const saveExerciseButton = document.getElementById("saveExerciseButton");
 
 const cancelExerciseButton =
     document.getElementById("cancelExerciseButton");
@@ -120,8 +106,9 @@ const libraryExerciseSelect =
     document.getElementById("libraryExerciseSelect");
 
 
-
-/* LIBRARY */
+/* =========================
+   EXERCISE LIBRARY ELEMENTS
+========================= */
 
 const dashboardAddExerciseButton =
     document.getElementById("dashboardAddExerciseButton");
@@ -154,8 +141,9 @@ const exerciseSearch =
     document.getElementById("exerciseSearch");
 
 
-
-/* CATEGORY */
+/* =========================
+   CATEGORY ELEMENTS
+========================= */
 
 const addCategoryButton =
     document.getElementById("addCategoryButton");
@@ -168,7 +156,6 @@ const saveCategoryButton =
 
 const cancelCategoryButton =
     document.getElementById("cancelCategoryButton");
-
 
 
 /* =========================
@@ -188,7 +175,6 @@ const defaultCategories = [
 ];
 
 
-
 /* =========================
    DATA
 ========================= */
@@ -198,18 +184,15 @@ let clients =
         localStorage.getItem("clients")
     ) || [];
 
-
 let programs =
     JSON.parse(
         localStorage.getItem("programs")
     ) || [];
 
-
 let exerciseLibrary =
     JSON.parse(
         localStorage.getItem("exerciseLibrary")
     ) || [];
-
 
 let categories =
     JSON.parse(
@@ -226,7 +209,6 @@ if (!categories || categories.length === 0) {
 }
 
 
-
 let currentClientId = null;
 
 let currentProgramId = null;
@@ -235,13 +217,11 @@ let currentDayId = null;
 
 let programDays = [];
 
-
-/* Editing state */
-
 let editingClientId = null;
 
 let editingLibraryExerciseId = null;
 
+let editingSessionId = null;
 
 
 /* =========================
@@ -252,73 +232,50 @@ function showView(viewId) {
 
     document
         .querySelectorAll(".view")
-        .forEach(
-            function (view) {
+        .forEach(function (view) {
 
-                view.classList.remove(
-                    "active"
-                );
+            view.classList.remove("active");
 
-            }
-        );
+        });
 
 
-    document
-        .getElementById(viewId)
-        .classList.add(
-            "active"
-        );
+    const selectedView =
+        document.getElementById(viewId);
 
 
-    updateNavigation(
-        viewId
-    );
+    if (selectedView) {
+
+        selectedView.classList.add("active");
+
+    }
+
+
+    updateNavigation(viewId);
 
 }
-
 
 
 function updateNavigation(viewId) {
 
-    [
-        homeButton,
-        clientsButton,
-        exercisesButton
-    ]
-        .forEach(
-            function (button) {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
+    homeButton.classList.remove("active");
+    clientsButton.classList.remove("active");
+    exercisesButton.classList.remove("active");
 
 
-    if (
-        viewId === "dashboard"
-    ) {
+    if (viewId === "dashboard") {
 
-        homeButton.classList.add(
-            "active"
-        );
+        homeButton.classList.add("active");
 
     }
 
 
-    if (
-        viewId === "exerciseLibraryView"
-    ) {
+    if (viewId === "exerciseLibraryView") {
 
-        exercisesButton.classList.add(
-            "active"
-        );
+        exercisesButton.classList.add("active");
 
     }
 
 }
-
 
 
 function showDashboard() {
@@ -334,12 +291,9 @@ function showDashboard() {
 
     updateCounts();
 
-    showView(
-        "dashboard"
-    );
+    showView("dashboard");
 
 }
-
 
 
 homeButton.addEventListener(
@@ -360,13 +314,10 @@ exercisesButton.addEventListener(
 
         renderExerciseLibrary();
 
-        showView(
-            "exerciseLibraryView"
-        );
+        showView("exerciseLibraryView");
 
     }
 );
-
 
 
 /* =========================
@@ -413,7 +364,6 @@ function saveCategories() {
 }
 
 
-
 /* =========================
    CLIENT SEARCH
 ========================= */
@@ -424,47 +374,34 @@ clientSearch.addEventListener(
 );
 
 
-
 /* =========================
-   CLIENT MODAL
+   ADD CLIENT
 ========================= */
 
 addClientButton.addEventListener(
     "click",
     function () {
 
-        editingClientId =
-            null;
-
+        editingClientId = null;
 
         clientModalTitle.textContent =
             "افزودن شاگرد";
 
-
         clearClientForm();
 
-
-        clientModal.classList.add(
-            "show"
-        );
+        clientModal.classList.add("show");
 
     }
 );
-
 
 
 cancelClientButton.addEventListener(
     "click",
     function () {
 
-        clientModal.classList.remove(
-            "show"
-        );
+        clientModal.classList.remove("show");
 
-
-        editingClientId =
-            null;
-
+        editingClientId = null;
 
         clearClientForm();
 
@@ -472,9 +409,8 @@ cancelClientButton.addEventListener(
 );
 
 
-
 /* =========================
-   SAVE / EDIT CLIENT
+   SAVE CLIENT
 ========================= */
 
 saveClientButton.addEventListener(
@@ -483,58 +419,41 @@ saveClientButton.addEventListener(
 
         const name =
             document
-                .getElementById(
-                    "clientName"
-                )
+                .getElementById("clientName")
                 .value
                 .trim();
-
 
         const phone =
             document
-                .getElementById(
-                    "clientPhone"
-                )
+                .getElementById("clientPhone")
                 .value
                 .trim();
-
 
         const age =
             document
-                .getElementById(
-                    "clientAge"
-                )
+                .getElementById("clientAge")
                 .value;
-
 
         const weight =
             document
-                .getElementById(
-                    "clientWeight"
-                )
+                .getElementById("clientWeight")
                 .value
                 .trim();
 
-
         const goal =
             document
-                .getElementById(
-                    "clientGoal"
-                )
+                .getElementById("clientGoal")
                 .value
                 .trim();
 
 
         if (name === "") {
 
-            alert(
-                "نام شاگرد را وارد کنید"
-            );
+            alert("نام شاگرد را وارد کنید");
 
             return;
 
         }
-
 
 
         if (editingClientId) {
@@ -544,8 +463,7 @@ saveClientButton.addEventListener(
                     function (item) {
 
                         return (
-                            item.id ===
-                            editingClientId
+                            item.id === editingClientId
                         );
 
                     }
@@ -557,92 +475,69 @@ saveClientButton.addEventListener(
             }
 
 
-            client.name =
-                name;
-
-            client.phone =
-                phone;
-
-            client.age =
-                age;
-
-            client.weight =
-                weight;
-
-            client.goal =
-                goal;
+            client.name = name;
+            client.phone = phone;
+            client.age = age;
+            client.weight = weight;
+            client.goal = goal;
 
 
-            currentClientId =
-                client.id;
+            saveClients();
+
+
+            const clientId =
+                editingClientId;
+
+
+            editingClientId = null;
+
+
+            clientModal.classList.remove("show");
+
+
+            clearClientForm();
+
+            updateCounts();
+
+            openClientProfile(clientId);
 
         } else {
 
             const newClient = {
 
-                id:
-                    createId(),
+                id: createId(),
 
-                name:
-                    name,
+                name: name,
 
-                phone:
-                    phone,
+                phone: phone,
 
-                age:
-                    age,
+                age: age,
 
-                weight:
-                    weight,
+                weight: weight,
 
-                goal:
-                    goal
+                goal: goal
 
             };
 
 
-            clients.push(
-                newClient
-            );
-
-        }
+            clients.push(newClient);
 
 
+            saveClients();
 
-        saveClients();
+            renderClients();
 
-        updateCounts();
-
-        renderClients();
-
-
-        clientModal.classList.remove(
-            "show"
-        );
+            updateCounts();
 
 
-        clearClientForm();
+            clientModal.classList.remove("show");
 
-
-        if (editingClientId) {
-
-            const id =
-                editingClientId;
-
-
-            editingClientId =
-                null;
-
-
-            openClientProfile(
-                id
-            );
+            clearClientForm();
 
         }
 
     }
 );
-
 
 
 /* =========================
@@ -661,32 +556,27 @@ function renderClients() {
         clients.filter(
             function (client) {
 
-                const combined =
+                const combinedText =
                     (
-                        client.name +
+                        (client.name || "") +
                         " " +
-                        client.phone +
+                        (client.phone || "") +
                         " " +
-                        client.goal
+                        (client.goal || "")
                     )
                         .toLowerCase();
 
 
-                return combined.includes(
-                    query
-                );
+                return combinedText.includes(query);
 
             }
         );
 
 
-    clientList.innerHTML =
-        "";
+    clientList.innerHTML = "";
 
 
-    if (
-        filteredClients.length === 0
-    ) {
+    if (filteredClients.length === 0) {
 
         clientList.innerHTML = `
             <div class="empty-box">
@@ -699,19 +589,14 @@ function renderClients() {
     }
 
 
-
     filteredClients.forEach(
         function (client) {
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
-            card.classList.add(
-                "client-card"
-            );
+            card.classList.add("client-card");
 
 
             const clientPrograms =
@@ -719,8 +604,7 @@ function renderClients() {
                     function (program) {
 
                         return (
-                            program.clientId ===
-                            client.id
+                            program.clientId === client.id
                         );
 
                     }
@@ -760,17 +644,13 @@ function renderClients() {
                 "click",
                 function () {
 
-                    openClientProfile(
-                        client.id
-                    );
+                    openClientProfile(client.id);
 
                 }
             );
 
 
-            clientList.appendChild(
-                card
-            );
+            clientList.appendChild(card);
 
         }
     );
@@ -778,22 +658,18 @@ function renderClients() {
 }
 
 
-
 /* =========================
-   CLIENT PROFILE
+   OPEN CLIENT PROFILE
 ========================= */
 
-function openClientProfile(
-    clientId
-) {
+function openClientProfile(clientId) {
 
     const client =
         clients.find(
             function (item) {
 
                 return (
-                    item.id ===
-                    clientId
+                    item.id === clientId
                 );
 
             }
@@ -805,12 +681,9 @@ function openClientProfile(
     }
 
 
-    currentClientId =
-        client.id;
+    currentClientId = client.id;
 
-
-    currentProgramId =
-        null;
+    currentProgramId = null;
 
 
     document.getElementById(
@@ -845,20 +718,15 @@ function openClientProfile(
 
     renderPrograms();
 
-
-    showView(
-        "clientProfile"
-    );
+    showView("clientProfile");
 
 }
-
 
 
 backButton.addEventListener(
     "click",
     showDashboard
 );
-
 
 
 /* =========================
@@ -874,8 +742,7 @@ editClientButton.addEventListener(
                 function (item) {
 
                     return (
-                        item.id ===
-                        currentClientId
+                        item.id === currentClientId
                     );
 
                 }
@@ -898,7 +765,7 @@ editClientButton.addEventListener(
         document.getElementById(
             "clientName"
         ).value =
-            client.name;
+            client.name || "";
 
 
         document.getElementById(
@@ -925,13 +792,10 @@ editClientButton.addEventListener(
             client.goal || "";
 
 
-        clientModal.classList.add(
-            "show"
-        );
+        clientModal.classList.add("show");
 
     }
 );
-
 
 
 /* =========================
@@ -947,8 +811,7 @@ deleteClientButton.addEventListener(
                 function (item) {
 
                     return (
-                        item.id ===
-                        currentClientId
+                        item.id === currentClientId
                     );
 
                 }
@@ -978,8 +841,7 @@ deleteClientButton.addEventListener(
                 function (item) {
 
                     return (
-                        item.id !==
-                        client.id
+                        item.id !== client.id
                     );
 
                 }
@@ -991,8 +853,7 @@ deleteClientButton.addEventListener(
                 function (program) {
 
                     return (
-                        program.clientId !==
-                        client.id
+                        program.clientId !== client.id
                     );
 
                 }
@@ -1005,48 +866,35 @@ deleteClientButton.addEventListener(
 
         updateCounts();
 
-
         showDashboard();
 
     }
 );
 
 
-
 /* =========================
-   PROGRAM CREATION
+   CREATE PROGRAM
 ========================= */
 
 addProgramButton.addEventListener(
     "click",
     function () {
 
-        programDays =
-            [];
-
-
         clearProgramForm();
 
         renderProgramDays();
 
-
-        programModal.classList.add(
-            "show"
-        );
+        programModal.classList.add("show");
 
     }
 );
-
 
 
 cancelProgramButton.addEventListener(
     "click",
     function () {
 
-        programModal.classList.remove(
-            "show"
-        );
-
+        programModal.classList.remove("show");
 
         clearProgramForm();
 
@@ -1054,25 +902,23 @@ cancelProgramButton.addEventListener(
 );
 
 
+/* =========================
+   PROGRAM DAYS WHILE CREATING
+========================= */
 
 addDayButton.addEventListener(
     "click",
     function () {
 
-        programDays.push(
-            {
+        programDays.push({
 
-                id:
-                    createId(),
+            id: createId(),
 
-                title:
-                    "",
+            title: "",
 
-                exercises:
-                    []
+            exercises: []
 
-            }
-        );
+        });
 
 
         renderProgramDays();
@@ -1081,42 +927,31 @@ addDayButton.addEventListener(
 );
 
 
-
 function renderProgramDays() {
 
-    daysContainer.innerHTML =
-        "";
+    daysContainer.innerHTML = "";
 
 
     programDays.forEach(
         function (day, index) {
 
             const row =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
-            row.classList.add(
-                "day-row"
-            );
+            row.classList.add("day-row");
 
 
             const input =
-                document.createElement(
-                    "input"
-                );
+                document.createElement("input");
 
 
-            input.type =
-                "text";
-
+            input.type = "text";
 
             input.placeholder =
                 "مثلاً جلسه " +
                 (index + 1) +
                 " - سینه";
-
 
             input.value =
                 day.title;
@@ -1134,19 +969,14 @@ function renderProgramDays() {
 
 
             const removeButton =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
 
-            removeButton.type =
-                "button";
-
+            removeButton.type = "button";
 
             removeButton.classList.add(
                 "remove-day-button"
             );
-
 
             removeButton.textContent =
                 "حذف";
@@ -1161,8 +991,7 @@ function renderProgramDays() {
                             function (item) {
 
                                 return (
-                                    item.id !==
-                                    day.id
+                                    item.id !== day.id
                                 );
 
                             }
@@ -1175,19 +1004,11 @@ function renderProgramDays() {
             );
 
 
-            row.appendChild(
-                input
-            );
+            row.appendChild(input);
 
+            row.appendChild(removeButton);
 
-            row.appendChild(
-                removeButton
-            );
-
-
-            daysContainer.appendChild(
-                row
-            );
+            daysContainer.appendChild(row);
 
         }
     );
@@ -1195,6 +1016,9 @@ function renderProgramDays() {
 }
 
 
+/* =========================
+   SAVE PROGRAM
+========================= */
 
 saveProgramButton.addEventListener(
     "click",
@@ -1202,36 +1026,35 @@ saveProgramButton.addEventListener(
 
         const title =
             document
-                .getElementById(
-                    "programTitle"
-                )
+                .getElementById("programTitle")
                 .value
                 .trim();
-
 
         const goal =
             document
-                .getElementById(
-                    "programGoal"
-                )
+                .getElementById("programGoal")
                 .value
                 .trim();
 
-
         const notes =
             document
-                .getElementById(
-                    "programNotes"
-                )
+                .getElementById("programNotes")
                 .value
                 .trim();
 
 
         if (title === "") {
 
-            alert(
-                "عنوان برنامه را وارد کنید"
-            );
+            alert("عنوان برنامه را وارد کنید");
+
+            return;
+
+        }
+
+
+        if (!currentClientId) {
+
+            alert("شاگرد انتخاب نشده است");
 
             return;
 
@@ -1240,8 +1063,7 @@ saveProgramButton.addEventListener(
 
         const newProgram = {
 
-            id:
-                createId(),
+            id: createId(),
 
             clientId:
                 currentClientId,
@@ -1261,8 +1083,7 @@ saveProgramButton.addEventListener(
 
                         return {
 
-                            id:
-                                day.id,
+                            id: day.id,
 
                             title:
                                 day.title,
@@ -1278,9 +1099,7 @@ saveProgramButton.addEventListener(
         };
 
 
-        programs.push(
-            newProgram
-        );
+        programs.push(newProgram);
 
 
         savePrograms();
@@ -1290,10 +1109,7 @@ saveProgramButton.addEventListener(
         renderPrograms();
 
 
-        programModal.classList.remove(
-            "show"
-        );
-
+        programModal.classList.remove("show");
 
         clearProgramForm();
 
@@ -1301,9 +1117,8 @@ saveProgramButton.addEventListener(
 );
 
 
-
 /* =========================
-   PROGRAM LIST
+   RENDER PROGRAM LIST
 ========================= */
 
 function renderPrograms() {
@@ -1321,13 +1136,10 @@ function renderPrograms() {
         );
 
 
-    programList.innerHTML =
-        "";
+    programList.innerHTML = "";
 
 
-    if (
-        clientPrograms.length === 0
-    ) {
+    if (clientPrograms.length === 0) {
 
         programList.innerHTML = `
             <div class="empty-box">
@@ -1344,14 +1156,10 @@ function renderPrograms() {
         function (program) {
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
-            card.classList.add(
-                "program-card"
-            );
+            card.classList.add("program-card");
 
 
             card.innerHTML = `
@@ -1385,17 +1193,13 @@ function renderPrograms() {
                 "click",
                 function () {
 
-                    openProgram(
-                        program.id
-                    );
+                    openProgram(program.id);
 
                 }
             );
 
 
-            programList.appendChild(
-                card
-            );
+            programList.appendChild(card);
 
         }
     );
@@ -1403,22 +1207,18 @@ function renderPrograms() {
 }
 
 
-
 /* =========================
    OPEN PROGRAM
 ========================= */
 
-function openProgram(
-    programId
-) {
+function openProgram(programId) {
 
     const program =
         programs.find(
             function (item) {
 
                 return (
-                    item.id ===
-                    programId
+                    item.id === programId
                 );
 
             }
@@ -1459,13 +1259,9 @@ function openProgram(
 
     renderProgramDetail();
 
-
-    showView(
-        "programDetail"
-    );
+    showView("programDetail");
 
 }
-
 
 
 backToProfileButton.addEventListener(
@@ -1489,24 +1285,343 @@ backToProfileButton.addEventListener(
 );
 
 
-
 /* =========================
-   PROGRAM DETAIL
+   EDIT PROGRAM
 ========================= */
 
-function renderProgramDetail() {
+editProgramButton.addEventListener(
+    "click",
+    function () {
 
-    const program =
-        programs.find(
-            function (item) {
+        const program =
+            getCurrentProgram();
 
-                return (
-                    item.id ===
-                    currentProgramId
+
+        if (!program) {
+            return;
+        }
+
+
+        document.getElementById(
+            "editProgramTitle"
+        ).value =
+            program.title || "";
+
+
+        document.getElementById(
+            "editProgramGoal"
+        ).value =
+            program.goal || "";
+
+
+        document.getElementById(
+            "editProgramNotes"
+        ).value =
+            program.notes || "";
+
+
+        editProgramModal.classList.add(
+            "show"
+        );
+
+    }
+);
+
+
+cancelProgramEditButton.addEventListener(
+    "click",
+    function () {
+
+        editProgramModal.classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
+saveProgramEditButton.addEventListener(
+    "click",
+    function () {
+
+        const program =
+            getCurrentProgram();
+
+
+        if (!program) {
+            return;
+        }
+
+
+        const title =
+            document
+                .getElementById(
+                    "editProgramTitle"
+                )
+                .value
+                .trim();
+
+
+        if (!title) {
+
+            alert("عنوان برنامه را وارد کنید");
+
+            return;
+
+        }
+
+
+        program.title =
+            title;
+
+
+        program.goal =
+            document
+                .getElementById(
+                    "editProgramGoal"
+                )
+                .value
+                .trim();
+
+
+        program.notes =
+            document
+                .getElementById(
+                    "editProgramNotes"
+                )
+                .value
+                .trim();
+
+
+        savePrograms();
+
+
+        editProgramModal.classList.remove(
+            "show"
+        );
+
+
+        openProgram(program.id);
+
+    }
+);
+
+
+/* =========================
+   DELETE PROGRAM
+========================= */
+
+deleteProgramButton.addEventListener(
+    "click",
+    function () {
+
+        const program =
+            getCurrentProgram();
+
+
+        if (!program) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                "برنامه «" +
+                program.title +
+                "» حذف شود؟"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        programs =
+            programs.filter(
+                function (item) {
+
+                    return (
+                        item.id !== program.id
+                    );
+
+                }
+            );
+
+
+        savePrograms();
+
+        updateCounts();
+
+
+        const clientId =
+            currentClientId;
+
+
+        currentProgramId =
+            null;
+
+
+        openClientProfile(clientId);
+
+    }
+);
+
+
+/* =========================
+   ADD SESSION
+========================= */
+
+addSessionButton.addEventListener(
+    "click",
+    function () {
+
+        editingSessionId =
+            null;
+
+
+        sessionModalTitle.textContent =
+            "جلسه جدید";
+
+
+        sessionTitleInput.value =
+            "";
+
+
+        sessionModal.classList.add(
+            "show"
+        );
+
+    }
+);
+
+
+cancelSessionButton.addEventListener(
+    "click",
+    function () {
+
+        sessionModal.classList.remove(
+            "show"
+        );
+
+
+        editingSessionId =
+            null;
+
+
+        sessionTitleInput.value =
+            "";
+
+    }
+);
+
+
+/* =========================
+   SAVE SESSION
+========================= */
+
+saveSessionButton.addEventListener(
+    "click",
+    function () {
+
+        const program =
+            getCurrentProgram();
+
+
+        if (!program) {
+            return;
+        }
+
+
+        const title =
+            sessionTitleInput.value.trim();
+
+
+        if (title === "") {
+
+            alert("نام جلسه را وارد کنید");
+
+            return;
+
+        }
+
+
+        if (!program.days) {
+
+            program.days =
+                [];
+
+        }
+
+
+        if (editingSessionId) {
+
+            const day =
+                program.days.find(
+                    function (item) {
+
+                        return (
+                            item.id ===
+                            editingSessionId
+                        );
+
+                    }
                 );
 
+
+            if (!day) {
+                return;
             }
+
+
+            day.title =
+                title;
+
+        } else {
+
+            program.days.push({
+
+                id: createId(),
+
+                title: title,
+
+                exercises: []
+
+            });
+
+        }
+
+
+        savePrograms();
+
+
+        editingSessionId =
+            null;
+
+
+        sessionModal.classList.remove(
+            "show"
         );
+
+
+        sessionTitleInput.value =
+            "";
+
+
+        renderProgramDetail();
+
+    }
+);
+
+
+/* =========================
+   EDIT SESSION
+========================= */
+
+function editSession(dayId) {
+
+    const program =
+        getCurrentProgram();
 
 
     if (!program) {
@@ -1514,23 +1629,183 @@ function renderProgramDetail() {
     }
 
 
+    const day =
+        (program.days || [])
+            .find(
+                function (item) {
+
+                    return (
+                        item.id === dayId
+                    );
+
+                }
+            );
+
+
+    if (!day) {
+        return;
+    }
+
+
+    editingSessionId =
+        day.id;
+
+
+    sessionModalTitle.textContent =
+        "تغییر نام جلسه";
+
+
+    sessionTitleInput.value =
+        day.title || "";
+
+
+    sessionModal.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================
+   DELETE SESSION
+========================= */
+
+function deleteSession(dayId) {
+
+    const program =
+        getCurrentProgram();
+
+
+    if (!program) {
+        return;
+    }
+
+
+    const day =
+        (program.days || [])
+            .find(
+                function (item) {
+
+                    return (
+                        item.id === dayId
+                    );
+
+                }
+            );
+
+
+    if (!day) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "جلسه «" +
+            (
+                day.title ||
+                "بدون نام"
+            ) +
+            "» و تمام حرکات آن حذف شوند؟"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
     program.days =
-        program.days || [];
+        program.days.filter(
+            function (item) {
+
+                return (
+                    item.id !== dayId
+                );
+
+            }
+        );
+
+
+    savePrograms();
+
+    renderProgramDetail();
+
+}
+
+
+/* =========================
+   RENDER PROGRAM DETAIL
+========================= */
+
+function renderProgramDetail() {
+
+    const program =
+        getCurrentProgram();
+
+
+    if (!program) {
+        return;
+    }
+
+
+    if (!program.days) {
+
+        program.days =
+            [];
+
+    }
 
 
     programDaysList.innerHTML =
         "";
 
 
-    if (
-        program.days.length === 0
-    ) {
+    if (program.days.length === 0) {
 
-        programDaysList.innerHTML = `
-            <div class="empty-box">
-                این برنامه جلسه‌ای ندارد.
-            </div>
+        const empty =
+            document.createElement("div");
+
+
+        empty.classList.add(
+            "empty-box"
+        );
+
+
+        empty.innerHTML = `
+
+            <p>
+                این برنامه هنوز جلسه‌ای ندارد.
+            </p>
+
+            <button
+                class="primary-button"
+                id="emptyAddSessionButton"
+            >
+                + افزودن اولین جلسه
+            </button>
+
         `;
+
+
+        programDaysList.appendChild(
+            empty
+        );
+
+
+        document
+            .getElementById(
+                "emptyAddSessionButton"
+            )
+            .addEventListener(
+                "click",
+                function () {
+
+                    addSessionButton.click();
+
+                }
+            );
+
 
         return;
 
@@ -1540,14 +1815,16 @@ function renderProgramDetail() {
     program.days.forEach(
         function (day, index) {
 
-            day.exercises =
-                day.exercises || [];
+            if (!day.exercises) {
+
+                day.exercises =
+                    [];
+
+            }
 
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             card.classList.add(
@@ -1556,9 +1833,7 @@ function renderProgramDetail() {
 
 
             const header =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             header.classList.add(
@@ -1566,10 +1841,17 @@ function renderProgramDetail() {
             );
 
 
+            const titleGroup =
+                document.createElement("div");
+
+
+            titleGroup.classList.add(
+                "training-day-title-group"
+            );
+
+
             const title =
-                document.createElement(
-                    "h3"
-                );
+                document.createElement("h3");
 
 
             title.textContent =
@@ -1580,23 +1862,33 @@ function renderProgramDetail() {
                 );
 
 
-            const addButton =
-                document.createElement(
-                    "button"
-                );
-
-
-            addButton.classList.add(
-                "primary-button",
-                "small"
+            titleGroup.appendChild(
+                title
             );
 
 
-            addButton.textContent =
+            const actions =
+                document.createElement("div");
+
+
+            actions.classList.add(
+                "session-actions"
+            );
+
+
+            const addExerciseButton =
+                document.createElement("button");
+
+
+            addExerciseButton.className =
+                "primary-button small";
+
+
+            addExerciseButton.textContent =
                 "+ حرکت";
 
 
-            addButton.addEventListener(
+            addExerciseButton.addEventListener(
                 "click",
                 function () {
 
@@ -1608,13 +1900,73 @@ function renderProgramDetail() {
             );
 
 
-            header.appendChild(
-                title
+            const renameButton =
+                document.createElement("button");
+
+
+            renameButton.className =
+                "secondary-button small";
+
+
+            renameButton.textContent =
+                "تغییر نام";
+
+
+            renameButton.addEventListener(
+                "click",
+                function () {
+
+                    editSession(
+                        day.id
+                    );
+
+                }
+            );
+
+
+            const deleteButton =
+                document.createElement("button");
+
+
+            deleteButton.className =
+                "danger-button small";
+
+
+            deleteButton.textContent =
+                "حذف جلسه";
+
+
+            deleteButton.addEventListener(
+                "click",
+                function () {
+
+                    deleteSession(
+                        day.id
+                    );
+
+                }
+            );
+
+
+            actions.appendChild(
+                addExerciseButton
+            );
+
+            actions.appendChild(
+                renameButton
+            );
+
+            actions.appendChild(
+                deleteButton
             );
 
 
             header.appendChild(
-                addButton
+                titleGroup
+            );
+
+            header.appendChild(
+                actions
             );
 
 
@@ -1623,9 +1975,7 @@ function renderProgramDetail() {
             );
 
 
-            if (
-                day.exercises.length === 0
-            ) {
+            if (day.exercises.length === 0) {
 
                 const empty =
                     document.createElement(
@@ -1673,273 +2023,8 @@ function renderProgramDetail() {
 }
 
 
-
 /* =========================
-   PRINT PROGRAM
-========================= */
-
-printProgramButton.addEventListener(
-    "click",
-    function () {
-
-        buildPrintProgram();
-
-        window.print();
-
-    }
-);
-
-
-
-function buildPrintProgram() {
-
-    const program =
-        programs.find(
-            function (item) {
-
-                return (
-                    item.id ===
-                    currentProgramId
-                );
-
-            }
-        );
-
-
-    const client =
-        clients.find(
-            function (item) {
-
-                return (
-                    item.id ===
-                    currentClientId
-                );
-
-            }
-        );
-
-
-    if (
-        !program ||
-        !client
-    ) {
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "printClientName"
-    ).textContent =
-        client.name;
-
-
-    document.getElementById(
-        "printProgramTitle"
-    ).textContent =
-        program.title;
-
-
-    document.getElementById(
-        "printProgramGoal"
-    ).textContent =
-        program.goal || "-";
-
-
-    document.getElementById(
-        "printDate"
-    ).textContent =
-        new Date()
-            .toLocaleDateString(
-                "fa-IR"
-            );
-
-
-    const notesBox =
-        document.getElementById(
-            "printProgramNotes"
-        );
-
-
-    if (program.notes) {
-
-        notesBox.textContent =
-            "توضیحات کلی: " +
-            program.notes;
-
-    } else {
-
-        notesBox.textContent =
-            "";
-
-    }
-
-
-    const printDays =
-        document.getElementById(
-            "printDays"
-        );
-
-
-    printDays.innerHTML =
-        "";
-
-
-    (
-        program.days ||
-        []
-    ).forEach(
-        function (day, index) {
-
-            const dayBlock =
-                document.createElement(
-                    "div"
-                );
-
-
-            dayBlock.classList.add(
-                "print-day"
-            );
-
-
-            const dayTitle =
-                day.title ||
-                (
-                    "جلسه " +
-                    (index + 1)
-                );
-
-
-            let rows =
-                "";
-
-
-            (
-                day.exercises ||
-                []
-            ).forEach(
-                function (exercise) {
-
-                    rows += `
-
-                        <tr>
-
-                            <td class="print-exercise-name">
-                                ${escapeHtml(exercise.name)}
-                            </td>
-
-                            <td>
-                                ${escapeHtml(exercise.sets) || "-"}
-                            </td>
-
-                            <td>
-                                ${escapeHtml(exercise.reps) || "-"}
-                            </td>
-
-                            <td>
-                                ${escapeHtml(exercise.weight) || "-"}
-                            </td>
-
-                            <td>
-                                ${escapeHtml(exercise.rest) || "-"}
-                            </td>
-
-                            <td class="print-notes-column">
-                                ${escapeHtml(exercise.notes) || ""}
-                            </td>
-
-                        </tr>
-
-                    `;
-
-                }
-            );
-
-
-            if (rows === "") {
-
-                rows = `
-
-                    <tr>
-
-                        <td colspan="6">
-                            حرکتی ثبت نشده است.
-                        </td>
-
-                    </tr>
-
-                `;
-
-            }
-
-
-            dayBlock.innerHTML = `
-
-                <div class="print-day-title">
-                    ${escapeHtml(dayTitle)}
-                </div>
-
-
-                <table class="print-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                حرکت
-                            </th>
-
-                            <th>
-                                ست
-                            </th>
-
-                            <th>
-                                تکرار
-                            </th>
-
-                            <th>
-                                وزن
-                            </th>
-
-                            <th>
-                                استراحت
-                            </th>
-
-                            <th>
-                                توضیحات
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        ${rows}
-
-                    </tbody>
-
-                </table>
-
-            `;
-
-
-            printDays.appendChild(
-                dayBlock
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =========================
-   EXERCISE LIBRARY
+   EXERCISE LIBRARY VIEW
 ========================= */
 
 function renderExerciseLibrary() {
@@ -1961,12 +2046,18 @@ function renderExerciseLibrary() {
         exerciseLibrary.filter(
             function (exercise) {
 
+                const exerciseName =
+                    (
+                        exercise.name ||
+                        ""
+                    )
+                        .toLowerCase();
+
+
                 const matchesSearch =
-                    exercise.name
-                        .toLowerCase()
-                        .includes(
-                            searchText
-                        );
+                    exerciseName.includes(
+                        searchText
+                    );
 
 
                 const matchesCategory =
@@ -1988,9 +2079,7 @@ function renderExerciseLibrary() {
         "";
 
 
-    if (
-        filteredExercises.length === 0
-    ) {
+    if (filteredExercises.length === 0) {
 
         exerciseLibraryList.innerHTML = `
             <div class="empty-box">
@@ -2007,9 +2096,7 @@ function renderExerciseLibrary() {
         function (exercise) {
 
             const card =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
 
             card.classList.add(
@@ -2051,7 +2138,6 @@ function renderExerciseLibrary() {
                     </div>
 
                 </div>
-
 
                 ${
                     exercise.note
@@ -2110,9 +2196,8 @@ function renderExerciseLibrary() {
 }
 
 
-
 /* =========================
-   LIBRARY MODAL
+   OPEN LIBRARY EXERCISE MODAL
 ========================= */
 
 function openNewLibraryExerciseModal() {
@@ -2147,7 +2232,6 @@ function openNewLibraryExerciseModal() {
 }
 
 
-
 addLibraryExerciseButton.addEventListener(
     "click",
     openNewLibraryExerciseModal
@@ -2158,7 +2242,6 @@ dashboardAddExerciseButton.addEventListener(
     "click",
     openNewLibraryExerciseModal
 );
-
 
 
 cancelLibraryExerciseButton.addEventListener(
@@ -2177,22 +2260,18 @@ cancelLibraryExerciseButton.addEventListener(
 );
 
 
-
 /* =========================
    EDIT LIBRARY EXERCISE
 ========================= */
 
-function editLibraryExercise(
-    exerciseId
-) {
+function editLibraryExercise(exerciseId) {
 
     const exercise =
         exerciseLibrary.find(
             function (item) {
 
                 return (
-                    item.id ===
-                    exerciseId
+                    item.id === exerciseId
                 );
 
             }
@@ -2218,11 +2297,11 @@ function editLibraryExercise(
     document.getElementById(
         "libraryExerciseName"
     ).value =
-        exercise.name;
+        exercise.name || "";
 
 
     libraryExerciseCategory.value =
-        exercise.category;
+        exercise.category || "";
 
 
     document.getElementById(
@@ -2236,7 +2315,6 @@ function editLibraryExercise(
     );
 
 }
-
 
 
 /* =========================
@@ -2271,18 +2349,14 @@ saveLibraryExerciseButton.addEventListener(
 
         if (name === "") {
 
-            alert(
-                "نام حرکت را وارد کنید"
-            );
+            alert("نام حرکت را وارد کنید");
 
             return;
 
         }
 
 
-        if (
-            editingLibraryExerciseId
-        ) {
+        if (editingLibraryExerciseId) {
 
             const exercise =
                 exerciseLibrary.find(
@@ -2305,32 +2379,28 @@ saveLibraryExerciseButton.addEventListener(
             exercise.name =
                 name;
 
+
             exercise.category =
                 category || "سایر";
+
 
             exercise.note =
                 note;
 
         } else {
 
-            exerciseLibrary.push(
-                {
+            exerciseLibrary.push({
 
-                    id:
-                        createId(),
+                id: createId(),
 
-                    name:
-                        name,
+                name: name,
 
-                    category:
-                        category ||
-                        "سایر",
+                category:
+                    category || "سایر",
 
-                    note:
-                        note
+                note: note
 
-                }
-            );
+            });
 
         }
 
@@ -2356,22 +2426,18 @@ saveLibraryExerciseButton.addEventListener(
 );
 
 
-
 /* =========================
    DELETE LIBRARY EXERCISE
 ========================= */
 
-function deleteLibraryExercise(
-    exerciseId
-) {
+function deleteLibraryExercise(exerciseId) {
 
     const exercise =
         exerciseLibrary.find(
             function (item) {
 
                 return (
-                    item.id ===
-                    exerciseId
+                    item.id === exerciseId
                 );
 
             }
@@ -2401,8 +2467,7 @@ function deleteLibraryExercise(
             function (item) {
 
                 return (
-                    item.id !==
-                    exerciseId
+                    item.id !== exerciseId
                 );
 
             }
@@ -2420,14 +2485,13 @@ function deleteLibraryExercise(
 }
 
 
-
 /* =========================
-   CATEGORIES
+   CATEGORY OPTIONS
 ========================= */
 
 function renderCategoryOptions() {
 
-    const currentFilter =
+    const previousFilter =
         categoryFilter.value;
 
 
@@ -2435,21 +2499,18 @@ function renderCategoryOptions() {
         "";
 
 
-    categoryFilter.innerHTML =
-        `
+    categoryFilter.innerHTML = `
         <option value="">
             همه دسته‌بندی‌ها
         </option>
-        `;
+    `;
 
 
     categories.forEach(
         function (category) {
 
             const option1 =
-                document.createElement(
-                    "option"
-                );
+                document.createElement("option");
 
 
             option1.value =
@@ -2466,9 +2527,7 @@ function renderCategoryOptions() {
 
 
             const option2 =
-                document.createElement(
-                    "option"
-                );
+                document.createElement("option");
 
 
             option2.value =
@@ -2489,18 +2548,21 @@ function renderCategoryOptions() {
 
     if (
         categories.includes(
-            currentFilter
+            previousFilter
         )
     ) {
 
         categoryFilter.value =
-            currentFilter;
+            previousFilter;
 
     }
 
 }
 
 
+/* =========================
+   CATEGORY MODAL
+========================= */
 
 addCategoryButton.addEventListener(
     "click",
@@ -2520,7 +2582,6 @@ addCategoryButton.addEventListener(
 );
 
 
-
 cancelCategoryButton.addEventListener(
     "click",
     function () {
@@ -2531,7 +2592,6 @@ cancelCategoryButton.addEventListener(
 
     }
 );
-
 
 
 saveCategoryButton.addEventListener(
@@ -2547,9 +2607,7 @@ saveCategoryButton.addEventListener(
                 .trim();
 
 
-        if (
-            categoryName === ""
-        ) {
+        if (categoryName === "") {
 
             alert(
                 "نام دسته‌بندی را وارد کنید"
@@ -2602,7 +2660,6 @@ saveCategoryButton.addEventListener(
 );
 
 
-
 exerciseSearch.addEventListener(
     "input",
     renderExerciseLibrary
@@ -2615,21 +2672,19 @@ categoryFilter.addEventListener(
 );
 
 
-
 /* =========================
    PROGRAM EXERCISE SELECT
 ========================= */
 
 function refreshProgramExerciseSelect() {
 
-    libraryExerciseSelect.innerHTML =
-        `
+    libraryExerciseSelect.innerHTML = `
 
         <option value="">
             -- انتخاب از کتابخانه --
         </option>
 
-        `;
+    `;
 
 
     exerciseLibrary.forEach(
@@ -2659,7 +2714,6 @@ function refreshProgramExerciseSelect() {
     );
 
 }
-
 
 
 libraryExerciseSelect.addEventListener(
@@ -2699,14 +2753,11 @@ libraryExerciseSelect.addEventListener(
 );
 
 
-
 /* =========================
-   ADD EXERCISE TO PROGRAM
+   OPEN EXERCISE MODAL
 ========================= */
 
-function openExerciseModal(
-    dayId
-) {
+function openExerciseModal(dayId) {
 
     currentDayId =
         dayId;
@@ -2722,7 +2773,6 @@ function openExerciseModal(
     );
 
 }
-
 
 
 cancelExerciseButton.addEventListener(
@@ -2744,6 +2794,9 @@ cancelExerciseButton.addEventListener(
 );
 
 
+/* =========================
+   SAVE EXERCISE TO SESSION
+========================= */
 
 saveExerciseButton.addEventListener(
     "click",
@@ -2815,16 +2868,7 @@ saveExerciseButton.addEventListener(
 
 
         const program =
-            programs.find(
-                function (item) {
-
-                    return (
-                        item.id ===
-                        currentProgramId
-                    );
-
-                }
-            );
+            getCurrentProgram();
 
 
         if (!program) {
@@ -2833,16 +2877,17 @@ saveExerciseButton.addEventListener(
 
 
         const day =
-            program.days.find(
-                function (item) {
+            (program.days || [])
+                .find(
+                    function (item) {
 
-                    return (
-                        item.id ===
-                        currentDayId
-                    );
+                        return (
+                            item.id ===
+                            currentDayId
+                        );
 
-                }
-            );
+                    }
+                );
 
 
         if (!day) {
@@ -2850,8 +2895,12 @@ saveExerciseButton.addEventListener(
         }
 
 
-        day.exercises =
-            day.exercises || [];
+        if (!day.exercises) {
+
+            day.exercises =
+                [];
+
+        }
 
 
         const selectedLibraryExercise =
@@ -2867,46 +2916,44 @@ saveExerciseButton.addEventListener(
             );
 
 
-        day.exercises.push(
-            {
+        day.exercises.push({
 
-                id:
-                    createId(),
+            id:
+                createId(),
 
-                libraryExerciseId:
-                    selectedLibraryExercise
-                        ?
-                        selectedLibraryExercise.id
-                        :
-                        null,
+            libraryExerciseId:
+                selectedLibraryExercise
+                    ?
+                    selectedLibraryExercise.id
+                    :
+                    null,
 
-                name:
-                    name,
+            name:
+                name,
 
-                category:
-                    selectedLibraryExercise
-                        ?
-                        selectedLibraryExercise.category
-                        :
-                        "",
+            category:
+                selectedLibraryExercise
+                    ?
+                    selectedLibraryExercise.category
+                    :
+                    "",
 
-                sets:
-                    sets,
+            sets:
+                sets,
 
-                reps:
-                    reps,
+            reps:
+                reps,
 
-                weight:
-                    weight,
+            weight:
+                weight,
 
-                rest:
-                    rest,
+            rest:
+                rest,
 
-                notes:
-                    notes
+            notes:
+                notes
 
-            }
-        );
+        });
 
 
         savePrograms();
@@ -2929,14 +2976,11 @@ saveExerciseButton.addEventListener(
 );
 
 
-
 /* =========================
    EXERCISE CARD
 ========================= */
 
-function createExerciseCard(
-    exercise
-) {
+function createExerciseCard(exercise) {
 
     const card =
         document.createElement(
@@ -3015,11 +3059,9 @@ function createExerciseCard(
             ${escapeHtml(exercise.name)}
         </h4>
 
-
         <div class="exercise-details">
             ${details.join("")}
         </div>
-
 
         ${
             exercise.notes
@@ -3041,10 +3083,255 @@ function createExerciseCard(
 }
 
 
+/* =========================
+   PRINT PROGRAM
+========================= */
+
+printProgramButton.addEventListener(
+    "click",
+    function () {
+
+        buildPrintProgram();
+
+        window.print();
+
+    }
+);
+
+
+function buildPrintProgram() {
+
+    const program =
+        getCurrentProgram();
+
+
+    const client =
+        clients.find(
+            function (item) {
+
+                return (
+                    item.id === currentClientId
+                );
+
+            }
+        );
+
+
+    if (!program || !client) {
+        return;
+    }
+
+
+    document.getElementById(
+        "printClientName"
+    ).textContent =
+        client.name;
+
+
+    document.getElementById(
+        "printProgramTitle"
+    ).textContent =
+        program.title;
+
+
+    document.getElementById(
+        "printProgramGoal"
+    ).textContent =
+        program.goal || "-";
+
+
+    document.getElementById(
+        "printDate"
+    ).textContent =
+        new Date()
+            .toLocaleDateString(
+                "fa-IR"
+            );
+
+
+    document.getElementById(
+        "printProgramNotes"
+    ).textContent =
+        program.notes
+            ?
+            "توضیحات کلی: " +
+            program.notes
+            :
+            "";
+
+
+    const printDays =
+        document.getElementById(
+            "printDays"
+        );
+
+
+    printDays.innerHTML =
+        "";
+
+
+    (
+        program.days ||
+        []
+    ).forEach(
+        function (day, index) {
+
+            const dayBlock =
+                document.createElement(
+                    "div"
+                );
+
+
+            dayBlock.classList.add(
+                "print-day"
+            );
+
+
+            let rows =
+                "";
+
+
+            (
+                day.exercises ||
+                []
+            ).forEach(
+                function (exercise) {
+
+                    rows += `
+
+                        <tr>
+
+                            <td>
+                                ${escapeHtml(exercise.name)}
+                            </td>
+
+                            <td>
+                                ${
+                                    escapeHtml(exercise.sets) ||
+                                    "-"
+                                }
+                            </td>
+
+                            <td>
+                                ${
+                                    escapeHtml(exercise.reps) ||
+                                    "-"
+                                }
+                            </td>
+
+                            <td>
+                                ${
+                                    escapeHtml(exercise.weight) ||
+                                    "-"
+                                }
+                            </td>
+
+                            <td>
+                                ${
+                                    escapeHtml(exercise.rest) ||
+                                    "-"
+                                }
+                            </td>
+
+                            <td>
+                                ${
+                                    escapeHtml(exercise.notes) ||
+                                    ""
+                                }
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                }
+            );
+
+
+            if (rows === "") {
+
+                rows = `
+
+                    <tr>
+
+                        <td colspan="6">
+                            حرکتی ثبت نشده است.
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+
+
+            dayBlock.innerHTML = `
+
+                <div class="print-day-title">
+
+                    ${
+                        escapeHtml(day.title) ||
+                        "جلسه " + (index + 1)
+                    }
+
+                </div>
+
+
+                <table class="print-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>حرکت</th>
+                            <th>ست</th>
+                            <th>تکرار</th>
+                            <th>وزن</th>
+                            <th>استراحت</th>
+                            <th>توضیح</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${rows}
+
+                    </tbody>
+
+                </table>
+
+            `;
+
+
+            printDays.appendChild(
+                dayBlock
+            );
+
+        }
+    );
+
+}
+
 
 /* =========================
-   COUNTS
+   HELPERS
 ========================= */
+
+function getCurrentProgram() {
+
+    return programs.find(
+        function (item) {
+
+            return (
+                item.id ===
+                currentProgramId
+            );
+
+        }
+    );
+
+}
+
 
 function updateCounts() {
 
@@ -3061,11 +3348,6 @@ function updateCounts() {
 
 }
 
-
-
-/* =========================
-   CLEAR FORMS
-========================= */
 
 function clearClientForm() {
 
@@ -3101,7 +3383,6 @@ function clearClientForm() {
 }
 
 
-
 function clearProgramForm() {
 
     document.getElementById(
@@ -3129,7 +3410,6 @@ function clearProgramForm() {
     renderProgramDays();
 
 }
-
 
 
 function clearExerciseForm() {
@@ -3176,17 +3456,10 @@ function clearExerciseForm() {
 }
 
 
-
-/* =========================
-   ID
-========================= */
-
 function createId() {
 
     return (
-        Date.now()
-            .toString() +
-
+        Date.now().toString() +
         Math.random()
             .toString(16)
             .slice(2)
@@ -3195,14 +3468,7 @@ function createId() {
 }
 
 
-
-/* =========================
-   SAFE HTML
-========================= */
-
-function escapeHtml(
-    value
-) {
+function escapeHtml(value) {
 
     if (
         value === null ||
@@ -3244,9 +3510,8 @@ function escapeHtml(
 }
 
 
-
 /* =========================
-   START
+   START APP
 ========================= */
 
 renderCategoryOptions();
