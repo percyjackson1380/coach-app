@@ -21,6 +21,11 @@ textarea {
 }
 
 
+button {
+    cursor: pointer;
+}
+
+
 .app {
     max-width: 900px;
 
@@ -32,7 +37,9 @@ textarea {
 }
 
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 
 .topbar {
     background-color: white;
@@ -59,14 +66,18 @@ textarea {
 }
 
 
-/* Main Content */
+/* =========================
+   CONTENT
+========================= */
 
 .content {
     padding: 16px;
 }
 
 
-/* Stats */
+/* =========================
+   STATS
+========================= */
 
 .stats {
     display: grid;
@@ -110,7 +121,9 @@ textarea {
 }
 
 
-/* Titles */
+/* =========================
+   TITLES
+========================= */
 
 h2 {
     font-size: 17px;
@@ -121,12 +134,14 @@ h2 {
 }
 
 
-/* Quick Actions */
+/* =========================
+   QUICK ACTIONS
+========================= */
 
 .quick-actions {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
 
     gap: 10px;
 }
@@ -141,8 +156,6 @@ h2 {
 
     border-radius: 14px;
 
-    cursor: pointer;
-
     font-weight: bold;
 }
 
@@ -152,7 +165,9 @@ h2 {
 }
 
 
-/* Empty State */
+/* =========================
+   EMPTY BOX
+========================= */
 
 .empty-box {
     background-color: white;
@@ -169,7 +184,9 @@ h2 {
 }
 
 
-/* Client Card */
+/* =========================
+   CLIENT CARD
+========================= */
 
 .client-card {
     background-color: white;
@@ -207,7 +224,9 @@ h2 {
 }
 
 
-/* Client Profile */
+/* =========================
+   CLIENT PROFILE
+========================= */
 
 .client-profile {
     display: none;
@@ -230,6 +249,10 @@ h2 {
 }
 
 
+/* =========================
+   BACK BUTTON
+========================= */
+
 .back-button {
     border: none;
 
@@ -239,13 +262,13 @@ h2 {
 
     border-radius: 10px;
 
-    cursor: pointer;
-
     margin-bottom: 10px;
 }
 
 
-/* Profile Section Header */
+/* =========================
+   PROFILE SECTION
+========================= */
 
 .profile-section-header {
     display: flex;
@@ -265,7 +288,9 @@ h2 {
 }
 
 
-/* Small Buttons */
+/* =========================
+   BUTTONS
+========================= */
 
 .small-button {
     border: none;
@@ -277,12 +302,12 @@ h2 {
     padding: 10px 14px;
 
     border-radius: 10px;
-
-    cursor: pointer;
 }
 
 
-/* Program Cards */
+/* =========================
+   PROGRAM CARD
+========================= */
 
 .program-card {
     background-color: white;
@@ -294,6 +319,13 @@ h2 {
     padding: 16px;
 
     margin-bottom: 10px;
+
+    cursor: pointer;
+}
+
+
+.program-card:hover {
+    background-color: #f9fafb;
 }
 
 
@@ -311,7 +343,135 @@ h2 {
 }
 
 
-/* Modal */
+/* =========================
+   PROGRAM DETAIL
+========================= */
+
+.program-detail {
+    display: none;
+}
+
+
+.program-detail-header {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 16px;
+}
+
+
+.program-detail-header h2 {
+    margin: 0 0 8px;
+}
+
+
+.program-detail-header p {
+    margin: 6px 0;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   TRAINING DAY CARD
+========================= */
+
+.training-day-card {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 16px;
+
+    margin-bottom: 14px;
+}
+
+
+.training-day-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+
+.training-day-header h3 {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   EXERCISE CARD
+========================= */
+
+.exercise-card {
+    background-color: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    margin-top: 8px;
+}
+
+
+.exercise-card h4 {
+    margin: 0 0 8px;
+
+    font-size: 15px;
+}
+
+
+.exercise-details {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+
+.exercise-detail {
+    background-color: white;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    color: #4b5563;
+}
+
+
+.exercise-note {
+    margin: 8px 0 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -394,13 +554,28 @@ h2 {
 
 
 .modal-box textarea {
-    min-height: 100px;
+    min-height: 90px;
 
     resize: vertical;
 }
 
 
-/* Form Buttons */
+/* =========================
+   FORM GRID
+========================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+
+/* =========================
+   FORM BUTTONS
+========================= */
 
 .form-buttons {
     display: flex;
@@ -423,8 +598,6 @@ h2 {
     background-color: #111827;
 
     color: white;
-
-    cursor: pointer;
 }
 
 
@@ -435,7 +608,9 @@ h2 {
 }
 
 
-/* Program Days */
+/* =========================
+   PROGRAM DAYS BUILDER
+========================= */
 
 .program-days-section {
     margin-top: 24px;
@@ -488,12 +663,12 @@ h2 {
     border-radius: 10px;
 
     padding: 0 12px;
-
-    cursor: pointer;
 }
 
 
-/* Bottom Navigation */
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav {
     position: fixed;
@@ -520,8 +695,6 @@ h2 {
     background: none;
 
     color: #6b7280;
-
-    cursor: pointer;
 }
 
 
@@ -532,7 +705,16 @@ h2 {
 }
 
 
-/* Mobile */
+.nav-button:disabled {
+    cursor: default;
+
+    opacity: 0.55;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
@@ -541,18 +723,18 @@ h2 {
     }
 
 
-    .quick-actions {
-        grid-template-columns: 1fr;
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
 
-    .day-row {
-        align-items: stretch;
+    .training-day-header {
+        align-items: flex-start;
     }
 
 
-    .remove-day-button {
-        padding: 0 10px;
+    .training-day-header .small-button {
+        white-space: nowrap;
     }
 
 }
